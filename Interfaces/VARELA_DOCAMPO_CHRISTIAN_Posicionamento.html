@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posicionamento</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        article{
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+        }
+        div{
+            height: 100vh;
+            width: 100%;
+        }
+
+        #fora1 {
+            border: 2px;
+            border-style: dotted;
+        }
+        #esquerda{
+            background-color: green;
+        }
+        #centro{
+            background-color: white;
+        }
+        #dereita{
+            background-color: green;
+        }
+
+        #fora2{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px;
+            border-style: dotted;
+        }
+        #arriba{
+            margin-top: 2%;
+            width: 96%;
+            height: 44vh;
+            background-color: orange;
+        }
+        #abaixo{
+            margin-bottom: 2%;
+            width: 96%;
+            height: 44vh;
+            background-color: aqua;
+        }
+
+        #fora3{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            border: 2px;
+            border-style: dotted;
+        }
+        #es{
+            margin-left: 5%;
+            width: 95%;
+            height: 90vh;
+            background-color: greenyellow;
+            border: 2px;
+            border-style: solid;
+            border-color: green;
+        }
+        #de{
+            margin-right: 5%;
+            margin-top: 5%;
+            margin-bottom: 5%;
+            width: 95%;
+            height: 90vh;
+            background-color: aquamarine;
+            border: 2px;
+            border-style: solid;
+            border-color: red;
+        }
+
+        #fora4{
+            padding: 2%;
+            display: flex;
+            flex-direction: row;
+            border: 2px;
+            border-style: solid;
+            justify-content: space-around;
+        }
+        #un{
+            margin:1%;
+            width: 47vw;
+            height: 49vh;
+            background-color: green;
+        }
+        #dous{
+            margin:1%;
+            width: 47vw;
+            height: 30vh;
+            background-color: blue;
+        }
+        #tres{
+            margin:1%;
+            width: 47vw;
+            height: 49vh;
+            background-color: red;
+        }
+        #catro{
+            margin:1%;
+            width: 47vw;
+            height: 68vh;
+            background-color: rebeccapurple;
+        }
+        #esquer{
+            align-content: space-between;
+        }
+        #dere{
+            align-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <article id="fora1">
+        <div id="esquerda"></div>
+        <div id="centro"></div>
+        <div id="dereita"></div>
+    </article>
+    <article>
+        <div id="fora2">
+            <div id="arriba"></div>
+            <div id="abaixo"></div>
+        </div>
+    </article>
+    <article>
+        <div id="fora3">
+            <div id="es"></div>
+            <div id="de"></div>
+        </div>
+    </article>
+    <article>
+        <div id="fora4">
+            <div id="esquer">
+                <div id="un"></div>
+                <div id="tres"></div>
+            </div>
+            <div id="dere">
+                <div id="dous"></div>
+                <div id="catro"></div>
+            </div>
+        </div>
+    </article>
+</body>
+</html>
