@@ -1,5 +1,3 @@
-![jellyctf-resize](https://github.com/user-attachments/assets/0a26e774-3942-4944-8d07-9559fd055f27)
-
 Info
 ----
 
