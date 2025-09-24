@@ -1,3 +1,4 @@
+<?php declare (strict_types = 1);?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,14 +7,14 @@
     <title>Power</title>
 </head>
 <body>
-    <?php declare(strict_types=1);
-        function pow(int $num1, int $num2 = 2){
+    <?php
+        function power(int $num1, int $num2 = 2){
             return pow($num1, $num2);
         }
         
         $n1 = 2;
         $n2 = 2;
-        echo "<p>$n1 to the $n2 is ".pow($n1, $n2)."</p>";
+        echo "<p>$n1 to the $n2 is ".power($n1, $n2)."</p>";
     ?>
 </body>
 </html>
