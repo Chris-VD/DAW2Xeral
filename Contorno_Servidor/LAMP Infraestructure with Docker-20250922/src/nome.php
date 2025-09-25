@@ -8,7 +8,7 @@
 </head>
 <body>
     <?php
-        function nome(string $nome, int $idade, string $apelido = "Apelido"):void {
+        function nome(?string $nome, int $idade, string $apelido = "Apelido"):void {
             echo "<b>".$nome." ".$apelido." is ".$idade." years old</b>";
         }
         nome("Erm", 10);
