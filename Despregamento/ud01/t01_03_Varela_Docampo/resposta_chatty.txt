@@ -1,0 +1,12 @@
+Perfecto 🙌. No ficheiro aparecen moitos servizos de Google (Gmail, Chat, People, Ads, etc.) cos seus endpoints.
+Fixen unha táboa que explica, en linguaxe sinxela, para que serve cada un deles:
+
+Servizo / Endpoint	    Para que serve
+accounts.google.com	    Manexa o inicio de sesión en Google (introducir usuario, contrasinal, retos de seguridade, rotación de cookies).
+mail.google.com	    Correspóndese con Gmail: ver, enviar e sincronizar correos, comprobar novas mensaxes, cargar interface, anuncios dentro de Gmail.
+chat.google.com	    É Google Chat: conversa individual e en grupo, xestionar contactos, membros, emojis, reaccións, estados, invitacións e capacidades das salas.
+clients6.google.com / waa-pa / ogads-pa / appsgrowthpromo-pa	    Son servizos internos de backend que xestionan anuncios, recomendacións de apps, experimentos de interface, telemetría e probas A/B.
+peoplestack-pa / people-pa	    Relacionado con Google Contacts / People API: suxestións de contactos, autocompletar, xestionar listas, experimentos de asistencias.
+prod-dynamite-prod-XX-us-signaler-pa.clients6.google.com	    Servizo de signaler / elección de servidor para Google Chat, usado para establecer conexión en tempo real (notificacións e chamadas).
+addons-pa.clients6.google.com   	Lista as extensións e complementos instalados en Gmail e Google Workspace.
+mail-ads.google.com 	Xestiona os anuncios personalizados que aparecen dentro da interface de Gmail.
