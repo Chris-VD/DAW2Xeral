@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forums</title>
+</head>
+<body>
+    <!-- Se o method e GET no form, ten que recibirse con $_GET no php
+        se é POST, faise con $_POST
+    -->
+    <form action="procesar.php" method="post">
+        <label for="idName">Name: </label>
+        <input type="text" id="idName" name="vName"><br>
+        <label for="idmail">Mail: </label>
+        <input type="text" id="idmail" name="vmail"><br>
+        <input type="submit" value="Send">
+    </form>
+</body>
+</html>
