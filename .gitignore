@@ -1,3 +1,4 @@
 Contorno*Cliente/
+.venv/
 *.har
 *.png
