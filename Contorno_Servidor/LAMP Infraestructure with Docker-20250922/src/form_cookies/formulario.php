@@ -1,4 +1,22 @@
-<?php declare (strict_types = 1)?>
+<?php declare (strict_types = 1);
+    function test_input($data){
+        $data = htmlspecialchars(stripslashes(trim($data)));
+        return $data;
+    }
+    $subjectArr = ["Java Programming", "Web Design", "Dockers administration", "Django framework", "Mango database"];
+    $name = $subject = "";
+    $nameErr = "";
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST"){
+        if(empty($_POST["name"])) $nameErr = " * Required";
+        $name = test_input($_POST["name"]);
+        if(!empty($_POST["subject"])) $subject = test_input($_POST["subject"]);
+        session_start();
+        $_SESSION["name"] = $name;
+        $_SESSION["subject"] = $subject;
+        header("Location: manage.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,25 +29,10 @@
         }
     </style>
 </head>
-<body>
-    <?php
-        function test_input($data){
-            $data = htmlspecialchars(stripslashes(trim($data)));
-            return $data;
-        }
-        $subjectArr = ["Java Programming", "Web Design", "Dockers administration", "Django framework", "Mango database"];
-        $name = $subject = "";
-        $nameErr = "";
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST"){
-            if(empty($_POST["name"])) $nameErr = " * Required";
-            $name = test_input($_POST["name"]);
-            if(!empty($_POST["subject"])) $subject = test_input($_POST["subject"]);
-        }
-    ?>
+<body></body>
     <h1>First practice using forms</h1>
     <?//echo htmlspecialchars(($_SERVER["PHP_SELF"]))?>
-    <form action="manage.php" method="POST">
+    <form action="<?echo htmlspecialchars(($_SERVER["PHP_SELF"]))?>" method="POST">
         <label for="idname">Name and surnames: </label>
         <input type="text" name="name" id="idname" value="<?echo $name?>">
         <span class="error"><?echo $nameErr?></span><br>
