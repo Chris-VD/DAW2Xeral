@@ -1,1 +1,0 @@
-use https://github.com/Tyrrrz/DiscordChatExporter or similar api tool to get hidden channel names

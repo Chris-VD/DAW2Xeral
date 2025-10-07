@@ -1,4 +1,0 @@
-Command injection
-
-; ls
-cat flag.txt

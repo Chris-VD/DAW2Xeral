@@ -1,4 +1,0 @@
-Leetcode: https://leetcode.com/u/Starknight1337/
-(Infer CS major or someone who does coding based on likes and RTs)
-
-jellyCTF{1337code_0n_str34m}
