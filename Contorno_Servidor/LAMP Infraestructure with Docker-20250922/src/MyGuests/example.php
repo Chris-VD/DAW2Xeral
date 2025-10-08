@@ -13,7 +13,10 @@
     <?
         try {
             $oper = new Operations();
-            echo "Database connection successful!";
+            $oper->openConnection();
+            echo "Database connection successful!<br>";
+            // echo $oper->getMyGuest(1); // Solo se se empregou fetch() en vez de fetchObject()
+            echo $oper->getMyGuest(1)->toString();
         } catch (PDOException $e) {
             // Handle connection errors
             echo "Database connection failed: " . $e->getMessage();
