@@ -12,11 +12,12 @@
             $querry = $this->conn->prepare($sqlString);
             return $querry->execute([$student->getDni(), $student->getName(), $student->getSurname(), (int)$student->getAge()]);
         }
-        public function getStudent(string $dni): ?Student{
+        public function getStudent(string $dni): Student{
             $sqlString = "select * from student where dni=?";
             $querry = $this->conn->prepare($sqlString);
             $querry->execute([$dni]);
             $student = $querry->fetchObject(Student::class);
+            if (!($student instanceof Student)) return new Student();
             return $student;
         }
         public function deleteStudent(string $dni): bool{

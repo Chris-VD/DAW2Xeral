@@ -39,5 +39,8 @@
         public function toString(){
             return "ID: ".$this->getId()."<br>DNI: ".$this->getDni()."<br>Name: ".$this->getName()."<br>Surname: ".$this->getSurname()."<br>Age: ".$this->getAge();
         }
+        public function isValid(){
+            return ($this->name != "" && $this->dni != "");
+        }
     }
 ?>

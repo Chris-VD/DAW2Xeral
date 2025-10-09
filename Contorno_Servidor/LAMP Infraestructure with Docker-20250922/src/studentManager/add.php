@@ -1,24 +1,31 @@
 <?php declare (strict_types = 1);
     require_once "./Operations.php";
+    function test_input($data){
+        $data = htmlspecialchars(stripslashes(trim($data)));
+        return $data;
+    }
     if(isset($_POST["send"])){  
-        $next;
+        $next = false;
         $student = new Student();
         $student->setDni($_POST["dni"]);
         $student->setName($_POST["name"]);
         $student->setSurname($_POST["surname"]);
         $student->setAge($_POST["age"]);
-        try {
-            $oper = new Operations();
-            $oper->openConnection();
-            $next = $oper->addStudent($student);
-        } catch (PDOException $e) {
-            echo "Database connection failed: " . $e->getMessage();
-            $next = false;
-        } finally {
-            $oper->closeconnection();
+        if (!($student->isValid())) header("Location: failure.html");
+        else {
+            try {
+                $oper = new Operations();
+                $oper->openConnection();
+                $next = $oper->addStudent($student);
+            } catch (PDOException $e) {
+                echo "Database connection failed: " . $e->getMessage();
+                $next = false;
+            } finally {
+                $oper->closeconnection();
+            }
+            if ($next) header("Location: success.html");
+            else header("Location: failure.html");
         }
-        if ($next) header("Location: success.html");
-        else header("Location: failure.html");
     }
 ?>
 <!DOCTYPE html>
@@ -29,6 +36,7 @@
     <title>Add</title>
 </head>
 <body>
+    <h1>Add Student</h1>
     <form action="" method="POST">
         <label for="dni">DNI: </label>
         <input type="text" name="dni" id="dni"><br>
