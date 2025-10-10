@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Ejercicio 5 - Vídeo y contenido dinámico</title>
+</head>
+
+<body>
+    <video controls width="480" src="sample.mp4">
+        <track src="subs.srt" kind="captions" srclang="en" label="English">
+        </track>
+    </video>
+    <div id="mensajes" aria-live="polite">Mensajes aparecerán aquí</div> 
+    <script>
+        const msg = document.getElementById("mensajes");
+        setInterval(() => {
+            const d = new Date();
+            msg.textContent = "Mensaje nuevo a las" + d.toLocaleTimeString();
+        }, 5000);
+    </script>
+</body>
+
+</html>

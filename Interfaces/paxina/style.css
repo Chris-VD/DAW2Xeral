@@ -1,0 +1,31 @@
+.rosa{
+    color: #FF2580;
+}
+#direccion{
+    font-style: italic;
+}
+#header{
+    background-image: url("./img/banner_tenda.jpeg"); /*Comprobar esto*/
+}
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    height: 100%;
+    margin: unset;
+    color: #0D2064;
+}
+nav {
+    background-color: #0D2064;
+    width: 100vw;
+    height: 5vh;
+    position:fixed;
+}
+button{
+    background-color: #FF2580;
+    color: white;
+}
+hr{
+    color: #FF2580;
+}
+footer{
+    background-color: #0D2064;
+}

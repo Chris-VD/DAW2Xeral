@@ -1,0 +1,10 @@
+aria-expanded="true"
+    Indica se un lemento está expandido
+aria-controls="sect1"
+    Indica que sect1 está controlado polo elemento actual (button)
+aria-labelledby="accordion1id"
+    Asocia un elemento con outro
+aria-hidden="true"
+    India que o eleento non é visible para o ususario
+aria-required="true"
+    Indica que o elemento do formulario ten que ser rellenado obligatoriamente
