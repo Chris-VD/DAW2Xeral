@@ -6,26 +6,121 @@
 }
 #header{
     background-image: url("./img/banner_tenda.jpeg"); /*Comprobar esto*/
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+}
+#header section{
+    margin-left: 50vw;
+    margin-top: 15vh;
+    background-color: #0D2064;
+    height: 15vh;
+    width: 5vw;
+    border-radius: 20%;
+    float: left;
+    p{
+        margin-top: 3vh;
+        font-size: small;
+        text-align: center;
+    };
+    button{
+        height: 5vh;
+        width: 3vw;
+        margin-left: 1vw;
+        background-color: #FF2580;
+        border-radius: 20%;
+        border: none;
+    }
+}
+#socials img{
+    width: 2vw;
+    height: auto;
+}
+#prim_div{
+    margin-left: 5vw;
+    section{
+        float: left;
+        width: 30vw;
+    };
+    img{
+    width: 10vw;
+    height: auto;
+    }
+}
+#sen_div{
+    width: 40vw;
+    margin-left: 30vw;
+    img{
+        float: left;
+        width: 10vw;
+        height: auto;
+    };
+    p{
+        margin-top: 5vh;
+        text-align: justify;
+    }
+    p::first-letter{
+        color: #FF2580;
+        font-size:xx-large;
+        border-right: grey 2px solid;
+        border-bottom: grey 2px solid;
+        margin-right: 1vw;
+    }
+}
+#ter_div{
+    width: 80vw;
+    margin-left: 10vw;
+    margin-top: 3vw;
+    img{
+    width: 15vw;
+    height: auto;
+    }
 }
 body{
     font-family:Arial, Helvetica, sans-serif;
+    font-size: large;
     height: 100%;
-    margin: unset;
+    margin: 0%;
     color: #0D2064;
+    font-weight: bold;
 }
 nav {
     background-color: #0D2064;
-    width: 100vw;
+    width: 100%;
     height: 5vh;
     position:fixed;
+    text-align: center;
+}
+nav a{
+    margin: 1.5vh;
+    float:left;
 }
 button{
     background-color: #FF2580;
     color: white;
 }
+main{
+    text-align: center;
+}
 hr{
+    width: 25vw;
     color: #FF2580;
 }
-footer{
+footer div{
+    padding: 2vh;
     background-color: #0D2064;
+    text-align: center;
+    padding-bottom: 5vh;
+    font-size: small;
+}
+#direccion{
+    text-align: left;
+    line-height: 0%;
+    float: left;
+    padding-top: 1.5vh;
+    padding-bottom: 0vh;
+}
+#socials{
+    float: right;
+    padding-bottom: 0vh;
 }
