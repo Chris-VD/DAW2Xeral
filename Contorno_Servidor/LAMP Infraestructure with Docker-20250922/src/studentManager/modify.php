@@ -19,7 +19,7 @@
         } finally {
             $oper->closeconnection();
         }
-        if ($next) header("Location: confirm.php");
+        if ($next) header("Location: modifyFinal.php");
         else header("Location: failure.html");
     }
 ?>
@@ -28,14 +28,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete</title>
+    <title>Search</title>
 </head>
 <body>
-    <h1>Delete Student</h1>
+    <h1>Search Student</h1>
     <form action="" method="POST">
         <label for="dni">DNI: </label>
         <input type="text" name="dni" id="dni"><br>
-        <input type="submit" name="send" value="Add">
+        <input type="submit" name="send" value="Modify">
     </form>
     <a href="./studentManager.php">Back to the student manager...</a>
 </body>

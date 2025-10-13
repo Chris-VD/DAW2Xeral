@@ -29,9 +29,9 @@
             if (!($this->getStudent($student->getDni()))){
                 return false;
             }
-            $sqlString = "update student set name=?, surname=?, age=? where dni=?";
+            $sqlString = "update student set name=?, surname=?, age=?, id=? where dni=?";
             $querry = $this->conn->prepare($sqlString);   
-            return $querry->execute([$student->getName(), $student->getSurname(), $student->getAge(), $student->getDni()]);
+            return $querry->execute([$student->getName(), $student->getSurname(), $student->getAge(), $student->getId(), $student->getDni()]);
         }
         public function studentList() : array{
             $sqlString = "select * from student";

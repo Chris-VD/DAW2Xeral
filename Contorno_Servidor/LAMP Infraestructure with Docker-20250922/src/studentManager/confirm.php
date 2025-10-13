@@ -15,7 +15,7 @@
         }
         if ($next) header("Location: success.html");
         else header("Location: failure.html");
-    } else header("Location: failure.html");
+    } else if(isset($_POST["no"])) header("Location: studentManager.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +26,7 @@
 </head>
 <body>
     <form action="" method="POST">
-        <label>Are you sure? </label><br>
+        <label>Are you sure you want to delete student <?echo $_COOKIE["dni"]?>? </label><br>
         <input type="submit" name="yes" value="Yes">
         <input type="submit" name="no" value="No">
     </form>
