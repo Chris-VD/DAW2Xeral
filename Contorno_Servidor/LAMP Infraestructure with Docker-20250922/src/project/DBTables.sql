@@ -12,5 +12,5 @@ CREATE TABLE post(
     picture TEXT,
     pname VARCHAR(20),
     thread INT,
-    CONSTRAINT threadpost FOREIGN KEY (thread) REFERENCES threads(id)
+    CONSTRAINT threadpost FOREIGN KEY (thread) REFERENCES threads(id) ON DELETE CASCADE
 );

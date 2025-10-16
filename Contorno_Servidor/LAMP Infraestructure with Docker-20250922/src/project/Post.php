@@ -1,13 +1,12 @@
 <?php
     abstract class Post{
-        protected static $counter;
         protected int $id;
         protected string $title;
         protected string $subject;
         protected string $picture;
         protected string $user;
 
-        public abstract function __construct(int $id, string $title, string $subject, string $picture, string $user);
+        public abstract function __construct(string $title, string $subject, string $picture, string $user);
 
         public function getId(){
             return $this->id;
@@ -26,10 +25,12 @@
         }
 
         public function setID(){
-            $this->id = Post::$counter++;
+            $max_id = include "./getLastId.php";
+            $this->id = $max_id+1;
         }
-        public function setCounter(int $counter){
-            Post::$counter = $counter; // ! Check every time the db calls for Posts
+
+        public function __tostring(){
+            return "ID: ".$this->id." - Title: ".$this->title." - Subject: ".$this->subject." - Pic: ".$this->picture." - User: ".$this->user;
         }
     }
 ?>

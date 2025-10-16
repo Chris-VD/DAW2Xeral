@@ -15,10 +15,10 @@ require_once "./Reply.php";
             $querry = $this->conn->prepare($sql);
             return $querry->execute([$thread->getId(), $thread->getTitle(), $thread->getPicture(), $thread->getSubject(), $thread->getUser()]);
         }
-        public function createPost(Reply $post, int $threadId):bool{
-            $sql = "insert into post(id, title, picture, subj, pname, thread) values (?, ?, ?, ?, ?, ?)";
+        public function createPost(Reply $post):bool{
+            $sql = "insert into post(id, picture, subj, pname, thread) values (?, ?, ?, ?, ?)";
             $querry = $this->conn->prepare($sql);
-            return $querry->execute([$post->getId(), $post->getTitle(), $post->getPicture(), $post->getSubject(), $post->getUser(), $threadId]);
+            return $querry->execute([$post->getId(), $post->getPicture(), $post->getSubject(), $post->getUser(), $post->getThread()]);
             // ! See if it works
         }
         public function deleteThread(int $threadId):bool{
@@ -31,17 +31,47 @@ require_once "./Reply.php";
             $querry = $this->conn->prepare($sql);
             return $querry->execute([$postId]);
         }
-        public function getThread() :Thread{
-
+        public function getThread(int $id) :Thread{
+            $sql = "select * from threads where id=?";
+            $querry = $this->conn->prepare($sql);
+            $querry->execute([$id]);
+            $rawThread = $querry->fetch();
+            $thread = new Thread($rawThread["title"], $rawThread["picture"], $rawThread["subj"], $rawThread["pname"]);
+            // ! Falta comprobación
+            return $thread;
         }
-        public function getReply() :Reply{
-
+        public function getReply(int $id) :Reply{
+            $sql = "select * from post where id=?";
+            $querry = $this->conn->prepare($sql);
+            $querry->execute([$id]);
+            $rawThread = $querry->fetch();
+            $thread = new Reply("", $rawThread["picture"], $rawThread["subj"], $rawThread["pname"]);
+            // ! Falta comprobación
+            return $thread;
         }
         public function getAllThreads() :array{
-
+            $sql = "select * from threads";
+            $querry = $this->conn->prepare($sql);
+            $querry->execute();
+            $threadList = [];
+            while ($row = $querry->fetch()) {
+                $thread = $this->getThread($row["id"]);
+                $threadList[] = $thread;
+            }
+            return $threadList;
         }
-        public function getAllReplies() :array{
-
+        public function getAllReplies(int $threadId) :array{
+            if ($this->getThread($threadId) === null) throw new Exception("Thread not found");
+            // ! Cambiar espo para que getThread tamen lanze excepcions ou algo
+            $sql = "select * from post where thread=?";
+            $querry = $this->conn->prepare($sql);
+            $querry->execute([$threadId]);
+            $replyList = [];
+            while ($row = $querry->fetch()) {
+                $reply = $this->getReply($row["id"]);
+                $replyList[] = $reply;
+            }
+            return $replyList;
         }
     }
 ?>
