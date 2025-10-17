@@ -45,7 +45,8 @@ require_once "./Reply.php";
             $querry = $this->conn->prepare($sql);
             $querry->execute([$id]);
             $rawThread = $querry->fetch();
-            $thread = new Reply("", $rawThread["picture"], $rawThread["subj"], $rawThread["pname"]);
+            $thread = new Reply;
+            $thread->construct($rawThread["thread"],"", $rawThread["picture"], $rawThread["subj"], $rawThread["pname"]);
             // ! Falta comprobación
             return $thread;
         }
@@ -56,6 +57,7 @@ require_once "./Reply.php";
             $threadList = [];
             while ($row = $querry->fetch()) {
                 $thread = $this->getThread($row["id"]);
+                $thread->reSetId($row["id"]);
                 $threadList[] = $thread;
             }
             return $threadList;
@@ -69,6 +71,7 @@ require_once "./Reply.php";
             $replyList = [];
             while ($row = $querry->fetch()) {
                 $reply = $this->getReply($row["id"]);
+                $reply->reSetId($row["id"]);
                 $replyList[] = $reply;
             }
             return $replyList;

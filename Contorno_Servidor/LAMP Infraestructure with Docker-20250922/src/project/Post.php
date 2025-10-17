@@ -28,9 +28,12 @@
             $max_id = include "./getLastId.php";
             $this->id = $max_id+1;
         }
+        public function reSetId(int $id){
+            $this->id = $id;
+        }
 
         public function __tostring(){
-            return "ID: ".$this->id." - Title: ".$this->title." - Subject: ".$this->subject." - Pic: ".$this->picture." - User: ".$this->user;
+            return "ID: ".$this->getId()." - Title: ".$this->title." - Subject: ".$this->subject." - Pic: ".$this->picture." - User: ".$this->user;
         }
     }
 ?>

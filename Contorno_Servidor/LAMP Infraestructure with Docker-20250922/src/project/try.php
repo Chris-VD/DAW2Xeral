@@ -1,15 +1,20 @@
 <?php declare(strict_types= 1);
     require_once "./Operations.php";
     if(isset($_POST["thread"])){
-        $thread = new Thread($_POST["title"], $_POST["picture"], $_POST["subject"], $_POST["user"]);
+        include "./upload.php";
+        $thread = new Thread($_POST["title"], $_FILES["fileToUpload"]["name"], $_POST["subject"], $_POST["user"]);
         $oper = new Operations();
         $oper->openConnection();
         $next = $oper->createThread($thread);
         if ($next) header("Location: success.html");
         else header("Location: failure.html");
     } else if (isset($_POST["reply"])){
+        try {
+            if (!include "./upload.php") $pic = "";
+            else $pic = $_FILES["fileToUpload"]["name"];
+        } catch (Exception $e){}
         $reply = new Reply();
-        $reply->construct((int)$_POST["threadId"], $_POST["title"], $_POST["picture"], $_POST["subject"], $_POST["user"]);
+        $reply->construct((int)$_POST["threadId"], $_POST["title"], $pic, $_POST["subject"], $_POST["user"]);
         $oper = new Operations();
         $oper->openConnection();
         $next = $oper->createPost($reply);
@@ -47,15 +52,13 @@
     <title>Forum</title>
 </head>
 <body>
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data"> <?// * encrtype for image upload?>
         <label for="title">Title:</label>
         <input type="text" name="title" id="title"><br>
         <label for="Subject">Subject:</label>
         <input type="text" name="subject" id="subject"><br>
         <label for="user">User:</label>
         <input type="text" name="user" id="user"><br>
-        <label for="picture">Picture:</label>
-        <input type="text" name="picture" id="picture"><br>
         <label for="threadID">Thread ID:</label>
         <input type="text" name="threadId" id="threadId"><br>
         <input type="submit" name="reply" value="Reply">
@@ -65,7 +68,9 @@
         <label for="threadIDAll">ThreadID:</label>
         <input type="text" name="threadIDAll" id="threadIDAll"><br>
         <input type="submit" name="AllThreads" value="All Threads">
-        <input type="submit" name="AllPosts" value="All Posts in Thread">
+        <input type="submit" name="AllPosts" value="All Posts in Thread"><br>
+        <label for="fileToUpload">Select image to upload (Max size 2MB):</label><br>
+        <input type="file" name="fileToUpload" id="fileToUpload">
     </form>
 </body>
 </html>

@@ -16,5 +16,8 @@
         public function getThread() : int{
             return $this->thread;
         }
+        public function __tostring(){
+            return parent::__tostring()." - Thread: ".$this->getThread();
+        }
     }
 ?>
