@@ -2,7 +2,7 @@
     class Reply extends Post{
         private int $thread;
         // Constructor
-        public function construct(int $thread, string $title = "", string $subject="", string $picture = "", string $user = "Anonymous"){
+        public function construct(int $thread, string $subject="", string $picture = "", string $user = "Anonymous"){
             $this->thread = $thread;
             $this->__construct("", $subject, $picture, $user);
         }

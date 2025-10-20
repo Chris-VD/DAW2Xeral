@@ -46,7 +46,7 @@ require_once "./Reply.php";
             $querry->execute([$id]);
             $rawThread = $querry->fetch();
             $thread = new Reply;
-            $thread->construct($rawThread["thread"],"", $rawThread["picture"], $rawThread["subj"], $rawThread["pname"]);
+            $thread->construct($rawThread["thread"],$rawThread["subj"], $rawThread["picture"], $rawThread["pname"]);
             // ! Falta comprobación
             return $thread;
         }

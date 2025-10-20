@@ -1,0 +1,66 @@
+header{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    a{
+        float: left;
+        padding-left: 5vw;
+    }
+    nav{ 
+        text-align: left;
+    }
+}
+main a{
+    float: right;
+    margin: 2vw;
+}
+.imgName{
+    font-size: small;
+}
+.image{
+    padding: 2vw 0 2vw 2vw;
+}
+.imageR{
+    padding: 0 0 2vw 2vw;
+}
+.info{
+    padding-left: 2vw;
+    width: 100%;
+    h2{
+        text-align: center;
+    }
+    .user{
+        font-size: small;
+        text-align: left;
+        margin-right: 1vw;
+    }
+    a{
+        width: 50%;
+        font-size: small;
+        text-align: right;
+        float: right;
+    }
+}
+div{
+    display: flex;
+    margin: 3vw;
+    border: 2px solid black;
+    img{
+        margin-right: 3vw;
+        width: 10vw;
+        height: auto;
+    }
+}
+.thread{
+    display: flex;
+    margin: 3vw;
+    border: 2px solid green;
+    img{
+        margin-right: 3vw;
+        width: 20vw;
+        height: auto;
+    }
+    .info{
+        margin-top: 5vh;
+    }
+}

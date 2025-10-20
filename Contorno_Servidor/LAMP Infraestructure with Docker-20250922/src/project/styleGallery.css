@@ -1,0 +1,23 @@
+header{
+    text-align: center;
+    nav{ 
+        text-align: left;
+    }
+}
+section{
+    display: flex;
+    flex-wrap: wrap;
+}
+div{
+    margin: 1vw;
+    display: flex;
+    flex-direction: column;
+    p{
+        font-size: small;
+    }
+    align-items: center;
+}
+img{
+    width: 10vw;
+    height: auto;
+}
