@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="left">
+        <h1>Contáctanos</h1>
+        <p>¿Tienes una pregunta, un proyecyo o solo quieres saludar? Escríbenos y te constestaremos pronto.</p>
+        <label for="horario">Horario</label>
+        <p name="horario">Lu -- Vi, 9:00 -- 18:00</p>
+        <label for="telefono">Teléfono</label>
+        <p name="telefono">+34 600 123 456</p>
+        <label for="email">Email</label>
+        <p name="email">hola@ejemplo.com</p>
+        <p id="pequeño">Direcciión: Calle Falsa 123, Madrid · Política de privadidad · Respuesta en 1-2 días hábiles</p>
+    </div>
+    <div id="right">
+        <h1>Envíanos un mensaje</h1>
+        <form action="" method="post">
+            <label for="nome">Nombre</label>
+            <input type="text" name="nome" id="correo">
+            <label for="correo">Correo electrónico</label>
+            <input type="text" name="correo" id="correo">
+            <label for="telefono">Teléfono (opcional)</label>
+            <input type="text" name="telefono" id="telefono">
+            <label for="asunto">Asunto</label>
+            <input type="text" name="asunto" id="asunto">
+            <label for="mensaxe">Mensaje</label>
+            <input type="text" name="mensaxe" id="mensaxe">
+            <label for="motivo">Motivo</label>
+            <select name="motivo" id="motivo">
+                <option value="CG">Consulta General</option>
+                <option value="Outro">Otro</option>
+            </select>
+            <input type="submit" name="send" value="Enviar mensaje">
+            <input type="submit" name="clear" value="Limpiar">
+            * Campos obligatorios
+        </form>
+    </div>
+</body>
+</html>
