@@ -1,0 +1,11 @@
+When uploading images, php has alimit of 3MB that I wasn't accounting for so I spent a couple of hours tyring to figure out why my image uploads were failing.
+At the end I just added new checks for file limit and called it a day since it works well enough.
+
+When assigning an Id to the thread/reply, since these two need to have consecutive IDs (thread #1, post #2, thread #3...) and an static property in the parent
+class Post resets every time you use this class, I had problems assigning a proper ID.
+I just made a php function that checks for the highest ID in both threads ad post table and sets the new ID to that value + 1.
+
+Because getThread() and getReply() in Operations.php return a Thread and Reply objects respectively, i need to create them inside those functions
+($thread = new Thread(...)), but by doing so, the ID of the post I'm returning isn't the actual ID of that post, but a new one since I created a new object.
+It took me a bit to realise it but the solution was pretty easy, after creating the new Post I'd just $post->reSetId($id), $id being the actual ID extracted
+from the database.
