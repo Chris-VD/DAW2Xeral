@@ -10,7 +10,11 @@
     $user = "Anonymous";
     if(isset($_POST["thread"])){
         try {
-            include "./upload.php";
+            if ($_FILES["fileToUpload"]["name"] && !include "./upload.php") {
+                header("Location: failure.html");
+                $next = false;
+                exit;
+            }
             $subject = $_POST["subject"];
             if(empty($subject)) $subject = "";
             else $subject = test_input($_POST["subject"]);
@@ -39,7 +43,7 @@
         } catch (\Throwable $th) {
             
         }
-        if ($next) header("Location: main.php");
+        if ($next) header("Location: thread.php?id=".$thread->getId());
     }
 ?>
 <!DOCTYPE html>
@@ -52,6 +56,16 @@
         .error{
             color: red;
         }
+        form{
+            display: flex;
+            flex-direction: column;
+            #submit{
+                margin-top: 2vh;
+            }
+            span{
+                float: left;
+            }
+        }
     </style>
 </head>
 <body>
@@ -59,17 +73,17 @@
         <a href="main.php">Back to main page...</a>
     </nav>
     <form action="" method="POST" enctype="multipart/form-data">
-        <label for="title">Title:</label>
+        <label for="title">Title:</label><span class="error"><?php echo $errorT?></span>
         <input type="text" name="title" id="title" value="<?echo $title?>">
-        <span class="error"><?php echo $errorT?></span><br>
-        <label for="Subject">Subject:</label>
-        <input type="text" name="subject" id="subject" value="<?echo $subject?>"><br>
+        <label for="subject">Subject:</label>
+        <!-- <input type="text" name="subject" id="subject" value="<?echo $subject?>"><br> -->
+        <textarea name="subject" id="subject" rows="10" cols="50"></textarea>
         <label for="user">User:</label>
-        <input type="text" name="user" id="user" value="<?echo $user?>"><br>
+        <input type="text" name="user" id="user" value="<?echo $user?>">
         <label for="fileToUpload">Select image to upload (Max size 2MB):</label>
-        <span class="error"><?php echo $errorP?></span><br>
-        <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
-        <input type="submit" name="thread" value="Create Thread">
+        <span class="error"><?php echo $errorP?></span>
+        <input type="file" name="fileToUpload" id="fileToUpload">
+        <input id="submit" type="submit" name="thread" value="Create Thread">
     </form>
 </body>
 </html>

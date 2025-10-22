@@ -49,6 +49,16 @@
         .error{
             color: red;
         }
+        form{
+            display: flex;
+            flex-direction: column;
+            #submit{
+                margin-top: 2vh;
+            }
+            span{
+                float: left;
+            }
+        }
     </style>
 </head>
 <body>
@@ -57,13 +67,14 @@
     </nav>
     <form action="" method="POST" enctype="multipart/form-data">
         <label for="Subject">Subject:</label>
-        <input type="text" name="subject" id="subject" value="<?echo $subject?>">
         <span class="error"><?php echo $errorS?></span><br>
+        <!-- <input type="text" name="subject" id="subject" value="<?echo $subject?>"> -->
+        <textarea name="subject" id="subject" rows="10" cols="50"></textarea>
         <label for="user">User:</label>
         <input type="text" name="user" id="user" value="<?echo $user?>"><br>
         <label for="fileToUpload">Select image to upload (Max size 2MB):</label>
         <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
-        <input type="submit" name="reply" value="Reply">
+        <input id="submit" type="submit" name="reply" value="Reply">
     </form>
 </body>
 </html>

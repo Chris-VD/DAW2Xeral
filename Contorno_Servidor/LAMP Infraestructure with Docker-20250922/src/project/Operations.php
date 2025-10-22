@@ -19,7 +19,6 @@ require_once "./Reply.php";
             $sql = "insert into post(id, picture, subj, pname, thread) values (?, ?, ?, ?, ?)";
             $querry = $this->conn->prepare($sql);
             return $querry->execute([$post->getId(), $post->getPicture(), $post->getSubject(), $post->getUser(), $post->getThread()]);
-            // ! See if it works
         }
         public function deleteThread(int $threadId):bool{
             $sql = "delete from threads where id=?";
@@ -37,7 +36,7 @@ require_once "./Reply.php";
             $querry->execute([$id]);
             $rawThread = $querry->fetch();
             $thread = new Thread($rawThread["title"], $rawThread["picture"], $rawThread["subj"], $rawThread["pname"]);
-            // ! Falta comprobación
+            $thread->reSetID($rawThread["id"]);
             return $thread;
         }
         public function getReply(int $id) :Reply{
@@ -47,7 +46,7 @@ require_once "./Reply.php";
             $rawThread = $querry->fetch();
             $thread = new Reply;
             $thread->construct($rawThread["thread"],$rawThread["subj"], $rawThread["picture"], $rawThread["pname"]);
-            // ! Falta comprobación
+            $thread->reSetId($rawThread["id"]);
             return $thread;
         }
         public function getAllThreads() :array{
@@ -63,8 +62,7 @@ require_once "./Reply.php";
             return $threadList;
         }
         public function getAllReplies(int $threadId) :array{
-            if ($this->getThread($threadId) === null) throw new Exception("Thread not found");
-            // ! Cambiar espo para que getThread tamen lanze excepcions ou algo
+            if (($this->getThread($threadId))->getTitle() === null) throw new Exception("Thread not found");
             $sql = "select * from post where thread=?";
             $querry = $this->conn->prepare($sql);
             $querry->execute([$threadId]);

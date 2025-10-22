@@ -21,14 +21,14 @@
         <a href="createThread.php">Create new Thread</a>
         <?
             foreach ($threadList as $thread){
-                echo "<div>
+                echo "<div class=\"threads\">
                     <section class=\"image\">
                         <p class=\"imgName\">".$thread->getPicture()."</p>
-                        <img src=\"./images/".$thread->getPicture()."\" alt=\"".$thread->getPicture()."\">
+                        <a href=\"./images/".$thread->getPicture()."\" ><img src=\"./images/".$thread->getPicture()."\" alt=\"".$thread->getPicture()."\"></a>
                     </section>
                     <section class=\"info\">
                         <h2>".$thread->getTitle()."</h2>
-                        <p class=\"user\">Posted by ".$thread->getUser()."</p>
+                        <p class=\"user\"><span class=\"id\">>>".$thread->getId()."</span> - Posted by ".$thread->getUser()."</p>
                         <p class=\"subj\">".$thread->getSubject()."</p>
                         <a href=\"thread.php?id=".$thread->getId()."\">See full thread</a>
                     </section>

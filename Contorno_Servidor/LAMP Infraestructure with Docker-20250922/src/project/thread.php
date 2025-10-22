@@ -28,23 +28,23 @@
         <div class="thread">
             <section class="image">
                 <p class="imgName"><?echo $thread->getPicture()?></p>
-                <img src="./images/<?echo $thread->getPicture()?>" alt="<?echo $thread->getPicture()?>">
+                <a href="./images/<?echo $thread->getPicture()?>"><img src="./images/<?echo $thread->getPicture()?>" alt="<?echo $thread->getPicture()?>"></a>
             </section>
             <section class="info">
-                <p class="user">Posted by <?echo $thread->getUser()?></p>
+                <p class="user"><span class="id">>><?echo $thread->getId()?></span> - Posted by <?echo $thread->getUser()?></p>
                 <p class="subj"><?echo $thread->getSubject()?></p>
             </section>
         </div>
         <?
             foreach ($replies as $reply){
-                echo "<div>";
+                echo "<div class=\"reply\">";
                 if (!empty($reply->getPicture())) echo 
                     "<section class=\"imageR\">
                         <p class=\"imgName\">".$reply->getPicture()."</p>
-                        <img src=\"./images/".$reply->getPicture()."\" alt=\"".$reply->getPicture()."\">
+                        <a href=\"./images/".$reply->getPicture()."\" ><img src=\"./images/".$reply->getPicture()."\" alt=\"".$reply->getPicture()."\"></a>
                     </section>";
                 echo "<section class=\"info\">
-                        <p class=\"user\">Posted by ".$reply->getUser()."</p>
+                        <p class=\"user\"><span class=\"id\">>>".$reply->getId()."</span> - Posted by ".$reply->getUser()."</p>
                         <p class=\"subj\">".$reply->getSubject()."</p>
                     </section>
                 </div>";

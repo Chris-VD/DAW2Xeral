@@ -1,3 +1,6 @@
+body{
+    background-color: #eef2ff;
+}
 header{
     text-align: center;
     align-items: center;
@@ -19,9 +22,15 @@ main a{
 }
 .image{
     padding: 2vw 0 2vw 2vw;
+    a{
+        margin: 0%;
+    }
 }
 .imageR{
     padding: 0 0 2vw 2vw;
+    a{
+        margin: 0%;
+    }
 }
 .info{
     padding-left: 2vw;
@@ -41,7 +50,7 @@ main a{
         float: right;
     }
 }
-div{
+.threads, .reply{
     display: flex;
     margin: 3vw;
     border: 2px solid black;
@@ -51,10 +60,19 @@ div{
         height: auto;
     }
 }
+.thread, .threads{
+    background-color: #d6daf0;
+}
+.reply{
+    background-color: #b7c5d9;
+}
+.id{
+    color: red;
+}
 .thread{
     display: flex;
     margin: 3vw;
-    border: 2px solid green;
+    border: 2px solid black;
     img{
         margin-right: 3vw;
         width: 20vw;
