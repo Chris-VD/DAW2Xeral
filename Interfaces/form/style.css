@@ -1,22 +1,28 @@
+* {
+    box-sizing: border-box;
+}
 html{
     height: 100%;
 }
 body{
+    margin-top: 5vh;
     display: flex;
     gap: 1vw;
     height: 100%;
+    justify-content: center;
 }
 div{
     color: white;
     border-radius: 20px;
-    padding: 2vh;
+    padding: 1%;
     background-color: black;
 }
 #left{
-    width: 17vw;
-    height: 30vh;
+    width: 350px;
+    height: 270px;
     font-size:small;
     h1{
+        font-size: large;
         margin: 0px;
     }
     p{
@@ -29,13 +35,90 @@ div{
     }
     #pequeño{
         font-size: smaller;
-        margin-top: 30px;
+        margin-top: 1%;
     }
 }
 #right{
-    width: 30vw;
-    height: 45vh;
+    width: 700px;
+    height: 450px;
     h1{
+        font-size: medium;
         margin-top: 0%;
+        margin-bottom: 1%;
+        margin-left: 0.5%;
     }
+}
+form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+label{
+    font-size: small;
+    margin: 0.4%;
+    width: auto;
+    input{
+        width: auto;
+    }
+}
+#nomeL, #correoL, #telefonoL{
+    input{
+        width: 100%;
+    }
+    width: 30%;
+    height: 80%;
+}
+#asuntoL, #mensaxeL, #motivoL{
+    input, select, textarea{
+        width: 100%;
+    }
+    width: 100%;
+}
+#buttons{
+    align-items: center;
+    display: flex;
+    width: 50%;
+    height: 100%;
+}
+.button{
+    display: inline-block;
+    text-align: center;
+    margin: 1%;
+    padding: 2%;
+    height: 40%;
+    font-weight: bold;
+}
+#send{
+    border: black;
+    color: black;
+    background-color: #7e3de6;
+}
+#obligatorios{
+    margin-right: 1vw;
+    font-size: small;
+}
+#lastrow{
+    margin-top: 2%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 50%;
+}
+input, select, textarea{
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+input, select{
+    height: 60%;
+}
+textarea{
+    padding-top: 10px;
+}
+select{
+    height: 4vh;
 }

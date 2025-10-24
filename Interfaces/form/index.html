@@ -21,24 +21,28 @@
     <div id="right">
         <h1>Envíanos un mensaje</h1>
         <form action="" method="post">
-            <label for="nome">Nombre</label>
-            <input type="text" name="nome" id="correo">
-            <label for="correo">Correo electrónico</label>
-            <input type="text" name="correo" id="correo">
-            <label for="telefono">Teléfono (opcional)</label>
-            <input type="text" name="telefono" id="telefono">
-            <label for="asunto">Asunto</label>
-            <input type="text" name="asunto" id="asunto">
-            <label for="mensaxe">Mensaje</label>
-            <input type="text" name="mensaxe" id="mensaxe">
-            <label for="motivo">Motivo</label>
+            <label for="nome" id="nomeL">Nombre
+            <input type="text" name="nome" id="nome" placeholder="Tu nombre"></label> 
+            <label for="correo" id="correoL">Correo electrónico
+            <input type="text" name="correo" id="correo" placeholder="tu@ejemplo.com"></label>
+            <label for="telefono" id="telefonoL">Teléfono (opcional)
+            <input type="text" name="telefono" id="telefono" placeholder="+34 600 123 456"></label>
+            <label for="asunto" id="asuntoL">Asunto
+            <input type="text" name="asunto" id="asunto" placeholder="Breve resumen"></label>
+            <label for="mensaxe" id="mensaxeL">Mensaje
+            <textarea name="mensaxe" id="mensaxe" rows="8" placeholder="Cuéntanos lo que necesites"></textarea></label>
+            <label for="motivo" id="motivoL">Motivo
             <select name="motivo" id="motivo">
                 <option value="CG">Consulta General</option>
                 <option value="Outro">Otro</option>
-            </select>
-            <input type="submit" name="send" value="Enviar mensaje">
-            <input type="submit" name="clear" value="Limpiar">
-            * Campos obligatorios
+            </select></label>
+            <section id="lastrow">
+                <section id="buttons">
+                    <input type="submit" name="send" value="Enviar mensaje" id="send" class="button">
+                    <input type="submit" name="clear" value="Limpiar" id="clear" class="button">
+                </section>
+                <span id="obligatorios">* Campos obligatorios</span>
+            </section>
         </form>
     </div>
 </body>
