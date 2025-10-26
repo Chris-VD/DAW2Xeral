@@ -4,27 +4,27 @@ Explicación  Vamos a comezar aprendendo a **utilizar un resolutor** como pode s
 
 Utiliza `dig` para resolver o nome de dominio `www.google.com`. **Realiza capturas** da saída da execución do comando.
 
-![image](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud03/01/01/image.png)
+![image](/home/infe/Documents/DAW2Xeral/Despregamento/ud03/01/01/image.png)
 
 Utiliza `dig` para resolver o nome de dominio `www.google.es`. **Realiza capturas** da saída da execución do comando.
 
-![image copy](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud03/01/01/image copy.png)
+![image copy](/home/infe/Documents/DAW2Xeral/Despregamento/ud03/01/01/image copy.png)
 
 Utiliza `dig` para resolver o nome de dominio `google.com`. **Realiza capturas** da saída da execución do comando.
 
-![image copy 2](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud03/01/01/image copy 2.png)
+![image copy 2](/home/infe/Documents/DAW2Xeral/Despregamento/ud03/01/01/image copy 2.png)
 
 Utiliza `dig` para resolver o nome de dominio `xunta.gal`. **Realiza capturas** da saída da execución do comando.
 
-![image copy 3](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud03/01/01/image copy 3.png)
+![image copy 3](/home/infe/Documents/DAW2Xeral/Despregamento/ud03/01/01/image copy 3.png)
 
 Utiliza `dig` para resolver o nome de dominio `edu.xunta.gal`. **Realiza capturas** da saída da execución do comando.
 
-![image copy 4](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud03/01/01/image copy 4.png)
+![image copy 4](/home/infe/Documents/DAW2Xeral/Despregamento/ud03/01/01/image copy 4.png)
 
 Utiliza `dig` para resolver o nome de dominio `www.youtube.com`. **Realiza capturas** da saída da execución do comando.
 
-![image copy 5](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud03/01/01/image copy 5.png)
+![image copy 5](/home/infe/Documents/DAW2Xeral/Despregamento/ud03/01/01/image copy 5.png)
 
 ------
 
@@ -45,6 +45,8 @@ Introduce de contrasinal de administrador `abc123.`
 
 1. Vamos a comprobar que funciona. Para iso engade no comando de `dig` `@localhost`. Con isto estás indicando que en lugar de resolver cara o servidor DNS  que está configurado no equipo, o fas cara o servidor DNS de `localhost`. Neste caso é o servidor DNS que creamos. Polo tanto resolve o dominio de `www.google.com`. **Realiza capturas** da saída da execución do comando.
 
+   ![Screenshot_20251026_185925](/home/infe/Documents/DAW2Xeral/Despregamento/ud03/01/02/Screenshot_20251026_185925.png)
+
 Explicación  Neste último comando, pedímoslle ao noso servidor que resolvera `www.google.com`. O noso servidor como non é un servidor autoritario da zona `google.com`
 
  fixo unha consulta recursiva para dar resolto dito nome. A continuación vamos **crear unha zona directa que o noso servidor poida resolver**.
@@ -52,6 +54,9 @@ Explicación  Neste último comando, pedímoslle ao noso servidor que resolvera 
 Na interface web do servidor DNS, vaite a `Zones` e preme no botón `Add Zone`.Engade a zona `iniciais.gal` como zona primaria.
 
 1. **Realiza unha captura** onde se vexa na interface web a zona creada.
+
+   ![Screenshot_20251026_191529](/home/infe/Documents/DAW2Xeral/Despregamento/ud03/01/02/Screenshot_20251026_191529.png)
+
 2. Comezaremos creando rexistros `A` da seguinte táboa:
 
 | nome                                         | IP         |
@@ -62,19 +67,33 @@ Na interface web do servidor DNS, vaite a `Zones` e preme no botón `Add Zone`.E
 
 1. Con `dig` resolve estes tres rexistros. **Realiza capturas** da saída da execución dos comandos.
 
+   ![Screenshot_20251026_193610](/home/infe/Documents/DAW2Xeral/Despregamento/ud03/01/02/Screenshot_20251026_193610.png)
+
+   ![Screenshot_20251026_193640](/home/infe/Documents/DAW2Xeral/Despregamento/ud03/01/02/Screenshot_20251026_193640.png)
+
+   ![Screenshot_20251026_193707](/home/infe/Documents/DAW2Xeral/Despregamento/ud03/01/02/Screenshot_20251026_193707.png)
+
 Explicación Imaxinemos agora que a nosa web atópase na IP 10.0.0.101 que é onde apunta o nome `www.iniciais.gal`. Pero queremos que tamén se poida acceder a web con outros nomes como `es.iniciais.gal` ou `en.iniciais.gal`. Poderiamos engadir outros dous rexistros `A`. Se nalgún momento tiveramos que migrar o servidor web (algo bastante habitual) entón teriamos que modificar os tres rexistros `A` pola nova IP. Nestes casos o mellor é utilizar os **rexistros `CNAME`**.
 
 1. Engade un rexistro `CNAME` para `es.iniciais.gal` e `en.iniciais.gal` que apunte a `www.iniciais.gal`
 
 Fai a resolución con `dig` destes nomes de dominio. **Realiza capturas** da saída da execución dos comandos.
 
+![Screenshot_20251026_193734](/home/infe/Documents/DAW2Xeral/Despregamento/ud03/01/02/Screenshot_20251026_193734.png)
+
+![Screenshot_20251026_193748](/home/infe/Documents/DAW2Xeral/Despregamento/ud03/01/02/Screenshot_20251026_193748.png)
+
 Explicación Xeralmente cando nun navegador web introducimos un nome de dominio,  este automaticamente mostra o contido da web. Por exemplo, se poñemos `google.com` este xa nolo traduce por `www.google.com`. Vamos facer o mesmo pero para o noso dominio. Teremos que utilizar o **rexistro `ANAME`** para este caso.
 
 Fai a resolución con `dig` do nome `iniciais.gal`. Verás que non che resolve con ningunha IP. **Realiza capturas** da saída da execución dos comandos.
 
+![Screenshot_20251026_193811](/home/infe/Documents/DAW2Xeral/Despregamento/ud03/01/02/Screenshot_20251026_193811.png)
+
 Engade un novo rexistro `ANAME` pero no nome escribe o símbolo `@`. Este tradúcese polo nome da zona, neste caso `iniciais.gal`. Fai que apunte a `www.iniciais.gal`.
 
 Fai a resolución con `dig` do nome `iniciais.gal`. **Realiza capturas** da saída da execución dos comandos.
+
+![Screenshot_20251026_193908](/home/infe/Documents/DAW2Xeral/Despregamento/ud03/01/02/Screenshot_20251026_193908.png)
 
 Cando estás despregando unha aplicación web (por exemplo en Let’s Encrypt), é común que o provedor te pida engadir un rexistro `TXT` no DNS para verificar que es o propietario do dominio antes de que  permitan enlazar a túa aplicación con ese dominio. Vamos ver un exemplo  de como engadir este tipo de rexistro.
 
@@ -82,8 +101,12 @@ Cando estás despregando unha aplicación web (por exemplo en Let’s Encrypt), 
 
 Resolve este nome de dominio. Recorda utilizar `dig TXT ...` para realizar a consulta deste tipo de rexistros  **Realiza capturas** da saída da execución dos comandos.
 
+![Screenshot_20251026_194129](/home/infe/Documents/DAW2Xeral/Despregamento/ud03/01/02/Screenshot_20251026_194129.png)
+
 Explicación Os rexistros **`CNAME` tamén permiten resolver cara dominios de outra zona**. Isto é moi habitual. En moitos servizos de Cloud se che proporcionan  unha máquina virtual non che indican a súa IP, senón que che din o seu  nome (isto realizase para esquivar o problema de falta de IPs públicas). Polo tanto se eu levanto unha aplicación nesa máquina virtual, terei  que apuntar cara ese nome que me proporcionaron cun rexistro `CNAME`.
 
 1. Engade un rexistro `CNAME` para `search.iniciais.gal` que apunte a `www.google.com`.
 
 Fai a resolución con `dig` destes nomes de dominio. **Realiza capturas** da saída da execución dos comandos.
+
+![Screenshot_20251026_194249](/home/infe/Documents/DAW2Xeral/Despregamento/ud03/01/02/Screenshot_20251026_194249.png)
