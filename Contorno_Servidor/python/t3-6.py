@@ -22,7 +22,7 @@ class Calculator:
     def number_of_objects(self):
         return Calculator.num
     
-    def show_nums(self):
+    def get_nums(self):
         return [self.num1, self.num2]
     
     def suma(self):
@@ -30,7 +30,7 @@ class Calculator:
     
 first_calculate = Calculator()
 first_calculate.set_nums(2, 4)
-print(first_calculate.show_nums())
+print(first_calculate.get_nums())
 second_calculate = Calculator(5, 7)
 print(second_calculate)
 print(f"{first_calculate.suma()}, {second_calculate.suma()}")
