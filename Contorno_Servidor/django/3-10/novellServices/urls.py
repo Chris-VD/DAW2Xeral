@@ -1,5 +1,5 @@
 """
-URL configuration for password_generator project.
+URL configuration for novellServices project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -16,11 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from generator import views
+from NSApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', views.home, name="home"),
-    path('password/', views.password, name='password'),
-    path('about/', views.about, name='about'),
+    path("home/", views.home, name="home"),
+    path("next/", views.next, name="next"),
 ]
