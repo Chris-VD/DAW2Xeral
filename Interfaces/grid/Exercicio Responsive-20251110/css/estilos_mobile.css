@@ -1,0 +1,69 @@
+/* Pequenos axustes iniciais */
+* {
+  box-sizing: border-box;
+}
+
+h1, h3, h4, p {
+  margin: 0px;
+  padding: 0.5em;
+}
+
+body {
+  background-color: #eaf4fc; /* Fondo lixeiramente azul */
+}
+
+/* Cambiar a cor de letra de certos elementos */
+.azul {
+  color: #0056b3; /* Azul escuro */
+}
+
+/* Contedor xeral */
+.container {
+  font-family: "Bubler One", cursive;
+  margin: 20px auto;
+  width: 90%;
+}
+
+/* Parte do logo e menú */
+header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu_item {
+  padding: 0.5em;
+  display: none;
+}
+
+/* Estilos parte principal */
+main {
+  background-color: #b3d9ff; /* Azul claro */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+main section {
+  width: 100%;
+}
+
+section.main_text {
+  color: #003366;
+  font-weight: bolder;
+  padding: 0.5em;
+}
+
+section.images {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+section.images img {
+  height: 100px;
+  width: 25%;
+}
+
+.hidden {
+  display: none;
+}
+

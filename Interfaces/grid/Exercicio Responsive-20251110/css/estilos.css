@@ -1,0 +1,78 @@
+
+/* Pequenos axustes iniciais */
+* {
+  box-sizing: border-box;
+}
+
+h1, h3, h4, p {
+  margin: 0px;
+  padding: 0.5em;
+}
+
+body {
+  background-color: #eaf4fc; /* Fondo lixeiramente azul */
+}
+
+/* Cambiar a cor de letra de certos elementos */
+.azul {
+  color: #0056b3; /* Azul escuro */
+}
+
+/* Contedor xeral */
+.container {
+  font-family: "Bubler One", cursive;
+  margin: 20px auto;
+  width: 90%;
+}
+
+
+.menu_item {
+  padding: 0.5em;
+  display: none;
+}
+
+/* Estilos parte principal */
+main {
+  background-color: #b3d9ff; /* Azul claro */
+}
+
+main section {
+  width: 100%;
+}
+
+section.main_text {
+  color: #003366;
+  font-weight: bolder;
+  padding: 0.5em;
+}
+
+
+section.images img {
+  height: 100px;
+  width: 25%;
+}
+
+.hidden {
+  display: none;
+}
+header{
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+header nav{
+  display: flex;
+  flex-direction: row;
+}
+
+main{
+  display: grid;
+  grid-template-areas: "images main";
+}
+main .images{
+  grid-area: images;
+}
+main .main_text{
+  grid-area: main;
+}

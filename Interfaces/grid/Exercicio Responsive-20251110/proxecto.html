@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="gl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Exemplo de Deseño Responsivo</title>
+
+    <link rel="stylesheet" type="text/css" href="css/estilos.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Bubbler+One&display=swap" rel="stylesheet">
+
+    <!-- Icona para amosar o menú -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+    />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="azul">
+        <h1>Deseño Responsivo</h1>
+        <nav>
+          <div class="icon"><i class="bi bi-list"></i></div>
+          <div class="menu_item">INICIO</div>
+          <div class="menu_item">SOBRE NÓS</div>
+          <div class="menu_item">CONTACTO</div>
+        </nav>
+      </header>
+      <main>
+        <section class="main_text">
+          <div>
+            <h3>PROXECTO PRÁCTICO</h3>
+            <h1 class="azul">DESEÑO RESPONSIVO</h1>
+          </div>
+          <div>
+            <p>
+              Páxina desenvolvida polo alumnado do Ciclo de DAW para o módulo DIW, inspirada nos recursos de @openwebinars.
+            </p>
+            <p>
+              Establece dous puntos de ruptura, a 576px e a 992px, nos que se produce un cambio no deseño da páxina.
+            </p>
+            <p>O proceso de desenvolvemento debe realizarse comezando polo deseño para pantallas pequenas.</p>
+          </div>
+        </section>
+        <section class="images">
+          <img src="img/img1.jpg" />
+          <img src="img/img2.jpg" />
+          <img src="img/img3.jpg" /> <img src="img/img4.jpg" />
+          <img src="img/img5.jpg" /> <img src="img/img6.jpg" />
+          <img src="img/img7.jpg" /> <img src="img/img8.jpg" />
+          <img src="img/img9.jpg" />
+        </section>
+      </main>
+      <section class="repaso">
+        <h2 class="azul">PARA REPASAR</h2>
+        <article>
+          <h4>Concepto 1</h4>
+          <h3 class="azul">Breakpoints</h3>
+          <p>
+            Debemos lembrar que o concepto de deseño responsivo, ademais de adaptación ao tamaño implica o cambio no deseño atendendo ao
+            tamaño ou outras características do dispostivo. A anchura da pantalla na que se produce o cambio é o que se coñece como Breakpoint.          </p>
+        </article>
+        <article>
+          <h4>Concepto 2</h4>
+          <h3 class="azul">Media Queries</h3>
+          <p>
+            Unha das ferramentas esenciais para poder realizar un deseño responsivo de calidade son as media-
+            queries que son un módulo de CSS3 que nos permite adaptar a representación do contido ás características do
+            dispositivo.         </p>
+        </article>
+        <article>
+          <h4>Concepto 3</h4>
+          <h3 class="azul">Mobile First</h3>
+          <p>
+            Mobile First é un concepto de deseño web optimizado para móbiles, onde se crea inicialmente unha páxina web para
+            pantallas pequenas (smartphones e tablets).  Calquera proceso de optimización de páxinas web baseado na estratexia 
+            Mobile First está guiado polos principios do deseño web responsive e normalmente usa CSS Grids para que a páxina poida ser escalable.        </p>
+        </article>
+      </section>
+    </div>
+    <script>
+        $(function() {
+            // Captura do evento para amosar ou ocultar
+            $(".icon").click(function() {
+            $(".menu_item").toggle();
+            });
+            $(window).resize(function() {
+            var anchura = $(this).width();
+            if (anchura > 576) {
+                $(".menu_item").show();
+            }
+            });
+        });
+    </script>
+  </body>
+</html>
