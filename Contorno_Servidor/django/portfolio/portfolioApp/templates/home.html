@@ -1,5 +1,6 @@
+{%extends "base.html"%}
 {%load static%}
-<h1>Home page</h1>
+{%block content%}
 <img src="{%static 'portfolio/wallhaven-3l33xy.jpg'%}"/>
 
 {%for project in projects%}
@@ -11,3 +12,4 @@
     <p>{{project.description}}</p>
     <img src="{{project.image.url}}" alt="{{project.title}}" />
 {%endfor%}
+{%endblock%}

@@ -7,10 +7,15 @@
 </head>
 <body>
     <h1>blog</h1>
+    <h3>Number of blog{{blogs.count|pluralize}}: {{blogs.count}}</h3>
     {%for blog in blogs%}
         <a href="{{blog.id}}"><h2>{{blog.title}}</h2></a>
         <p>{{blog.description}}</p>
-        <p>{{blog.date}}</p>
+        <!--blog.description|safe -> interpreta codigo html
+            blog.description|truncatechars:X -> X:int, limita a cantidade de chars mostrados
+            blog.description|striptags -> elimina os tags htm do texto, non os intereta
+        -->
+        <p>{{blog.date|date:"D d, M Y"}}</p>
     {%endfor%}
 </body>
 </html>

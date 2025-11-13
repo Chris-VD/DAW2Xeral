@@ -17,6 +17,8 @@ Including another URLconf
 from django.urls import path, include
 from blog import views as blogViews
 
+app_name = "blog"
+
 urlpatterns = [
     path("", blogViews.blog, name="blog"),
     path("<int:blog_id>/", blogViews.detail, name="detail")
