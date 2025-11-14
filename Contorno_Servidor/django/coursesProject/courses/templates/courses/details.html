@@ -1,0 +1,7 @@
+{%extends 'courses/template.html'%}
+{%block content%}
+<h1>Course</h1>
+<h2>{{course.name}}</h2>
+<p>{{course.description}}</p>
+<img src="{{course.photo.url}}" alt="{{course.name}}" style="width: 50%;">
+{%endblock%}
