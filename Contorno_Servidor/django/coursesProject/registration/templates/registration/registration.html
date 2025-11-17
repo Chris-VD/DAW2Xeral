@@ -1,2 +1,19 @@
-<h1>registration</h1>
-<!--!-->
+{%extends 'courses/template.html'%}
+{%block content%}
+<h1>Registration</h1>
+<form action="{% url 'result' %}">
+    <label for="name">
+        Name: 
+        <input type="text" id="name" name="name">
+    </label><br>
+    <label for="surname">
+        Surname: 
+        <input type="text" id="surname" name="surname">
+    </label><br>
+    <label for="age">
+        Age: 
+        <input type="number" name="age" value="age">
+    </label><br>
+    <input type="submit" value="Submit">
+</form>
+{%endblock%}

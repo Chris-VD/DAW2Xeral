@@ -1,0 +1,12 @@
+{%extends 'courses/template.html'%}
+{%block content%}
+<h1>Result</h1>
+<h2>Name:</h2>
+<p>{{ info.name }}</p>
+<h2>Surname: </h2>
+<p>{{ info.surname }}</p>
+<h2>Age: </h2>
+<p>{{ info.age }}</p>
+<h2>Date</h2>
+<p>{{ info.date|date:"d, M \o\f Y" }}</p>
+{%endblock%}

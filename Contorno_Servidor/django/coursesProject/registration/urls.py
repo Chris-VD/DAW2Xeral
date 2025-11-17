@@ -19,4 +19,5 @@ from registration import views
 
 urlpatterns = [
     path('', views.registration, name="registration"),
+    path("result", views.result, name="result")
 ]
