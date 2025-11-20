@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_list_or_404
 from django.db import IntegrityError
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login as lin
 from django.contrib.auth import logout as lout
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
+from .forms import TodoForm
+from .models import Todo
 
 # Create your views here.
 def signup(request):
@@ -38,7 +40,20 @@ def logout(request):
         return redirect("home")
 
 def currenttodos(request):
-    return render(request, "todos/currenttodos.html")
+    listTodos = Todo.objects.filter(user=request.user, completed__isnull=True)
+    return render(request, "todos/currenttodos.html", {"list":listTodos})
 
 def home(request):
     return render(request, "todos/home.html")
+
+def createtodo(request):
+    if request.method != "POST":
+        return render(request,"todos/createtodo.html", {"form": TodoForm()})
+    try:
+        newForm = TodoForm(request.POST).save(commit=False)
+        newForm.user = request.user
+        newForm.save()
+        return redirect("home")
+    except:
+        return render(request,"todos/createtodo.html", {"form": TodoForm(), "error": "Houbo un erro"})
+    

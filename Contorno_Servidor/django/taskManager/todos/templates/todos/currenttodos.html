@@ -1,1 +1,11 @@
-<h1>todos</h1>
+<h1>Todos</h1>
+<ul>
+    {% for todo in list %}
+    <li>
+        {% if todo.important %}<b>{% endif %}
+        {{todo.title}}
+        {% if todo.important %}</b>{% endif %}
+        {% if todo.memo %} - {{todo.memo}}{% endif %}
+    </li>
+    {% endfor %}
+</ul>

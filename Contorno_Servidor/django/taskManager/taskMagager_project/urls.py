@@ -26,5 +26,6 @@ urlpatterns = [
     path("logout/", todoViews.logout, name="logout"),
     # Tods
     path("currenttodos/", todoViews.currenttodos, name="currenttodos"),
+    path("createtodos/", todoViews.createtodo, name="createtodos"),
     path("", todoViews.home, name="home"),
 ]
