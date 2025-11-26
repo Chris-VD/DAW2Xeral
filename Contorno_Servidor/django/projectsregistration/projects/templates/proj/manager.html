@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content%}
+<ul>
+{% for proj in list %}
+    <li><a href="{{proj.id}}"><strong>{{proj.title}}</strong></a></li>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -1,15 +1,19 @@
-from django.shortcuts import render, redirect, get_list_or_404
-from django.db import IntegrityError
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
 from django.contrib.auth import login as lin
 from django.contrib.auth import logout as lout
 from django.contrib.auth import authenticate
-from django.contrib.auth.models import User
-from .forms import TodoForm
-from .models import Todo
+from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
+from .models import Project
+from .forms import ProjForm
+
 
 # Create your views here.
+def home(request):
+    return render(request, "proj/home.html")
+
 def signup(request):
     if (request.method == "GET"):
         return render(request, "auth/signup.html", {"form": UserCreationForm()})
@@ -20,7 +24,7 @@ def signup(request):
         user.save()
         lin(request, user)
         # return render(request, "auth/signup.html", {"form": UserCreationForm(), "error": "Success"})
-        return redirect("currenttodos")   
+        return redirect("home")   
     except IntegrityError:
         return render(request, "auth/signup.html", {"form": UserCreationForm(), "error": "Username is already taken!"})
 
@@ -39,24 +43,23 @@ def logout(request):
     if request.method == "POST":
         lout(request)
         return redirect("home")
-
-@login_required
-def currenttodos(request):
-    listTodos = Todo.objects.filter(user=request.user, completed__isnull=True)
-    return render(request, "todos/currenttodos.html", {"list":listTodos})
-
-def home(request):
-    return render(request, "todos/home.html")
-
-@login_required
-def createtodo(request):
-    if request.method != "POST":
-        return render(request,"todos/createtodo.html", {"form": TodoForm()})
-    try:
-        newForm = TodoForm(request.POST).save(commit=False)
-        newForm.user = request.user
-        newForm.save()
-        return redirect("home")
-    except:
-        return render(request,"todos/createtodo.html", {"form": TodoForm(), "error": "Houbo un erro"})
     
+@login_required
+def manager(request):
+    projList = Project.objects.filter(manager=request.user)
+    return render(request, "proj/manager.html", {"list": projList})
+
+@login_required
+def proj(request, proj_id):
+    project = get_object_or_404(Project, pk=proj_id)
+    if request.method != "POST":
+        return render(request, "proj/proj.html", {"proj": project})
+    else:
+        typeSubmit = request.POST["submit"]
+        if typeSubmit == "Edit":
+            form = ProjForm(request.POST or None, instance=project)
+            if form.is_valid:
+                form.save()
+        elif typeSubmit == "Delete":
+            project.delete()
+        return redirect("manager")
