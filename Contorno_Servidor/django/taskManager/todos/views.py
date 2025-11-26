@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from .forms import TodoForm
 from .models import Todo
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def signup(request):
@@ -39,6 +40,7 @@ def logout(request):
         lout(request)
         return redirect("home")
 
+@login_required
 def currenttodos(request):
     listTodos = Todo.objects.filter(user=request.user, completed__isnull=True)
     return render(request, "todos/currenttodos.html", {"list":listTodos})

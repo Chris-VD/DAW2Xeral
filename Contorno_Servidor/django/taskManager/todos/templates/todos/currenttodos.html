@@ -1,4 +1,11 @@
+{% extends "base.html" %}
+{% block content%}
 <h1>Todos</h1>
+{% if user %}
+<a href="{% url 'createtodos' %}">Create ToDo</a>
+{% else %}
+<span style="color: red;">Non está loggeado!</span>
+{% endif %}
 <ul>
     {% for todo in list %}
     <li>
@@ -9,3 +16,4 @@
     </li>
     {% endfor %}
 </ul>
+{%endblock%}

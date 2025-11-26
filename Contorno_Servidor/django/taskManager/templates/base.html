@@ -1,0 +1,20 @@
+{% load static %}
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+{% endblock %}
+<nav>
+{% if user.is_authenticated %}
+    <p>Logged in as: <strong>{{user.username}}</strong></p>
+    <form action="{% url 'logout' %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Log out">
+    </form>
+    <a href="{% url 'currenttodos' %}">TODO list</a>
+{%else%}
+    <a href="{% url 'signup'%}">Sign up</a>
+    <a href="{% url 'login'%}">Log in</a>
+{%endif%}
+    <a href="{% url 'home' %}">Home</a>
+</nav>
+{%block content%}
+{%endblock%}
