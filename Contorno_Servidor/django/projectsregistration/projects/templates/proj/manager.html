@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content%}
+<h1>Projets</h1>
 <ul>
 {% for proj in list %}
     <li><a href="{{proj.id}}"><strong>{{proj.title}}</strong></a></li>
 {% endfor %}
 </ul>
+<a href="{% url 'addnew' %}">Add new project</a>
 {% endblock %}

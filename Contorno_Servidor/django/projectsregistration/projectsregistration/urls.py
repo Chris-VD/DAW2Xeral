@@ -28,4 +28,5 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('manager/', views.manager, name="manager"),
     path("manager/<int:proj_id>/", views.proj, name="proj"),
+    path('addnew/', views.addnew, name="addnew"),
 ]

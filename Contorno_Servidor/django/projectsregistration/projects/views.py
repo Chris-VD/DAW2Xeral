@@ -46,14 +46,15 @@ def logout(request):
     
 @login_required
 def manager(request):
-    projList = Project.objects.filter(manager=request.user)
+    projList = Project.objects.filter(manager=request.user).order_by("-date")
     return render(request, "proj/manager.html", {"list": projList})
 
 @login_required
 def proj(request, proj_id):
     project = get_object_or_404(Project, pk=proj_id)
+    form = ProjForm(request.POST or None, instance=project)
     if request.method != "POST":
-        return render(request, "proj/proj.html", {"proj": project})
+        return render(request, "proj/proj.html", {"proj": project, "form":form})
     else:
         typeSubmit = request.POST["submit"]
         if typeSubmit == "Edit":
@@ -62,4 +63,17 @@ def proj(request, proj_id):
                 form.save()
         elif typeSubmit == "Delete":
             project.delete()
+        return redirect("manager")
+    
+@login_required
+def addnew(request):
+    form = ProjForm()
+    if request.method != "POST":
+        return render(request, "proj/addnew.html", {"form": form})
+    else:
+        form = ProjForm(request.POST)
+        if form.is_valid:
+            nuform = form.save(commit=False)
+            nuform.manager = request.user
+            nuform.save()
         return redirect("manager")

@@ -2,20 +2,20 @@
 {%block content%}
 <form action="" method="post">
     {%csrf_token%}
+    <!-- as partes comentadas é facéndoas co project, con forms é todo automático -->
     <label for="title">Title:
-        <input type="text" name="title" value="{{proj.title}}">
+        <!-- <input type="text" name="title" value="{{proj.title}}"> -->
+         {{form.title}}
     </label><br>
     <label for="description">Description:
-        <textarea name="description" id="description" rows="10" cols="50">{{proj.description}}</textarea>
+        <!-- <textarea name="description" id="description" rows="10" cols="50">{{proj.description}}</textarea> -->
+         {{form.description}}
     </label><br>
     <label for="date">Date:
-        <input type="text" name="date" value="{{proj.date}}">
+        <!-- <input type="text" name="date" value="{{proj.date}}"> -->
+        {{form.date}}
     </label><br>
     <input type="submit" name="submit" value="Edit">
     <input type="submit" name="submit" value="Delete">
 </form>
-<!-- <p>Title: <strong>{{proj.title}}</strong></p>
-<p>Description: {{proj.description}}</p>
-<p>Date: {{proj.date|date:"d, M \o\f Y"}}</p>
-<p>Manager: {{proj.manager}}</p> -->
 {%endblock%}
