@@ -1,0 +1,154 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+div.container {
+    margin: 5px;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-areas: 
+        "header header"
+        "nav nav"
+        "aside main"
+        "footer footer";
+    gap: 10px;
+}
+header{
+    height: auto;
+    padding: 10px;
+    background-color: yellow;
+    grid-area: header;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1{
+        margin-right: 10px;
+    }
+    #marca{
+        position: relative;
+        width: 10em;
+    }
+    #inicial{
+        margin: 0px;
+        padding: 0px;
+        position: absolute;
+        bottom:10%;
+        left:10%;
+    }
+    img{
+        float: left;
+        height: 60px;
+        width: 80px;
+    }
+}
+nav{
+    display: flex;
+    position: sticky;
+    height: 70px;
+    align-items: center;
+    top:0;
+    grid-area: nav;
+    justify-content: center;
+    background-color: aquamarine;
+    ul{
+        li>a{
+            
+            text-decoration: none;
+            color: black;
+        }
+        list-style: none;
+        width: 30%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
+aside{
+    grid-area: aside;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    article{
+        padding: 5px;
+        border: 2px solid black;
+        border-radius: 5px;
+    }
+}
+main{
+    grid-area: main;
+    
+    section:nth-child(1){
+        margin-bottom: 5px;
+        display: grid;
+        gap: 5px;
+        grid-template-columns: auto auto auto auto;
+        img{
+            width: 100%;
+        }
+        img:nth-child(1){grid-column: 1/3;}
+        img:nth-child(2){grid-column: 3/5;}
+        img:nth-child(3){grid-column: 1/5;}
+    }
+    section:nth-child(2){
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .card{
+            flex: 1 1 200px;
+            text-align: center;
+            margin: 5px 10px;
+            padding: 10px;
+            border: 2px solid black;
+            p:first-letter{
+                font-size: larger;
+                font-weight: bold;
+                border-bottom: 2px solid black;
+            }
+            h2{
+                margin: 0px;
+            }
+            button{
+                width: 50%;
+                background-color: cyan;
+                border: 1px solid black;
+                border-radius: 5px;
+            }
+            button:hover{
+                background-color: blue;
+                color: white;
+            }
+        }
+    }
+}
+footer{
+    grid-area: footer;
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    border-top: 3px solid black;
+    padding-top: 10px;
+    address p{
+        margin: 0px;
+    }
+}
+
+@media (max-width: 760px){
+    .container{
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-areas:
+            "header"
+            "nav"
+            "aside"
+            "main"
+            "footer";
+    }
+    aside{
+        flex-direction: row;
+        gap: 10px;
+        margin: 10px;
+    }
+}
