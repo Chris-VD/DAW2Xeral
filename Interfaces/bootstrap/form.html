@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+</head>
+
+<body class="container">
+    <div class="row mt-5 text-white">
+        <div class="col-lg-4 bg-black text-white p-4 rounded h-50">
+            <h1 style="font-size: larger;" class="mb-0">Contáctanos</h1>
+            <p>
+                ¿Tienes una pregunta, un proyecyo o solo quieres saludar? Escríbenos y
+                te constestaremos pronto.
+            </p>
+            <label for="horario">Horario</label>
+            <p name="horario">Lu -- Vi, 9:00 -- 18:00</p>
+            <label for="telefono">Teléfono</label>
+            <p name="telefono">+34 600 123 456</p>
+            <label for="email">Email</label>
+            <p name="email">hola@ejemplo.com</p>
+            <p style="font-size: smaller;">
+                Dirección: Calle Falsa 123, Madrid · Política de privadidad ·
+                Respuesta en 1-2 días hábiles
+            </p>
+        </div>
+        <div class="col-lg-6 bg-black text-white rounded p-4 ms-lg-3 mt-lg-0 mt-3">
+            <h1 style="font-size: larger;" class="mb-0">Envíanos un mensaje</h1>
+            <form action="" method="post">
+                <div class="row">
+                    <div class="col-xl-4 mb-3">
+                        <label for="nome" class="form-label">Nombre</label>
+                        <input type="text" name="nome" id="nome" class="form-control bg-black" placeholder="Tu nombre" />
+                    </div>
+                    <div class="col-xl-4 mb-3">
+                        <label for="correo" class="form-label">Correo electrónico</label>
+                        <input type="text" name="correo" id="correo" class="form-control bg-black"
+                            placeholder="tu@ejemplo.com" />
+                    </div>
+                    <div class="col-xl-4 mb-3">
+                        <label for="telefono" class="form-label">Teléfono (opcional)</label>
+                        <input type="text" name="telefono" id="telefono" class="form-control bg-black"
+                            placeholder="+34 600 123 456" />
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <label for="asunto" class="form-label bg-black">Asunto</label>
+                    <input type="text" name="asunto" id="asunto" class="form-control bg-black" placeholder="Breve resumen" />
+                </div>
+                <div class="col mb-3">
+                    <label for="mensaxe" class="form-label">Mensaje</label>
+                    <textarea name="mensaxe" id="mensaxe" class="form-control bg-black" rows="8"
+                        placeholder="Cuéntanos lo que necesites"></textarea>
+                </div>
+                <div class="col mb-3">
+                    <label for="motivo" class="form-label">Motivo</label>
+                    <select name="motivo" class="form-select bg-black">
+                        <option value="CG">Consulta General</option>
+                        <option value="Outro">Otro</option>
+                    </select>
+                </div>
+                <div class="col">
+                    
+                        <div class="row">
+                            <div class="col">
+                                <input type="submit" name="send" value="Enviar mensaje" id="send" class="btn btn-primary me-2 text-black mb-xl-0 mb-2" />
+                                <input type="submit" name="clear" value="Limpiar" id="clear" class="btn btn-dark border border-white" />
+                            </div>
+                            <div class="col text-end">
+                                <span id="obligatorios">* Campos obligatorios</span>
+                            </div>
+                        </div>
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
