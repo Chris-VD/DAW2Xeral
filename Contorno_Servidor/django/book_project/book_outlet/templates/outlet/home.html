@@ -1,14 +1,27 @@
 <h1>Home page</h1>
-{{prim}}<br>
 {%for book in highest%}
-Highest selling: {{book}}<br>
+    Highest selling: {{book}}<br>
 {%endfor%}<br>
+
 {%for book in query%}
-Potter, best selling or >3*: {{book}}<br>
+    Potter and best selling or >3*: {{book}}<br>
 {%endfor%}<br>
+
 {%for book in jkr%}
-JK Rowling bestsellers: {{book}}<br>
+    JK Rowling bestsellers: {{book}}<br>
 {%endfor%}<br>
+
 {%for book in rowling%}
-JK Rowling books: {{book}}<br>
+    JK Rowling books: {{book}}<br>
+{%endfor%}<br><br>
+
+{%for book in books%}
+    {{book}}<br>
+    Auth: {{book.author}}<br>
+    Auth address: {{book.author.address}}<br>
+    Countries published:<br>
+    {% for country in book.published_countries.all %}
+        -{{country.name}}<br>
+    {%endfor%}
+    <br>
 {%endfor%}

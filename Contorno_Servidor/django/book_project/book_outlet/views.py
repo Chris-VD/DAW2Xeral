@@ -10,5 +10,10 @@ def home(request):
 
     rowling = Book.objects.filter(author__last_name = "Rowling")
     rowling = Author.objects.get(last_name="Rowling").book_set.all()
+    # book_set é o nome por defecto, podes cambialo en models.py engadindo related_name="..." á foreign key de authors en books
+    # author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True, related_name="calqueranome")
+    # rowling = Author.objects.get(last_name="Rowling").fkbooks.all()
 
-    return render(request, "outlet/home.html", {"highest":highest, "query":query, "jkr":jkr, "rowling":rowling})
+    books = Book.objects.all()
+
+    return render(request, "outlet/home.html", {"highest":highest, "query":query, "jkr":jkr, "rowling":rowling, "books":books})

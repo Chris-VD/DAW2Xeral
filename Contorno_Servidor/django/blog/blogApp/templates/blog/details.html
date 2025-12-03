@@ -1,0 +1,14 @@
+<a href="{%url 'home'%}">Home screen</a>
+<h1>{{post.title}}</h1>
+<p>By: <a href="mailto:{{post.author.email}}">{{post.author}}</a></p>
+<label for="tags">Tags:</label>
+<ul>
+    {% for tag in post.tag.all %}
+    <li>{{tag.caption}}</li>
+    {% endfor %}
+</ul>
+<span>{{post.date|date:"d \o\f M - Y"}}</span>
+<h2>{{post.excerpt}}</h2>
+<p>{{post.slug}}</p>
+<img href="{{post.image_name}}" alt="{{post.image_name}}">
+<p>{{post.content}}</p>
