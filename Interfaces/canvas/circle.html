@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="300px" height="300px" style="border: 1px solid black;"></canvas>
+    <script defer>
+        /**
+         *  @type {HTMLCanvasElement}
+         */
+        let canvas = document.querySelector("#myCanvas")
+        let ctx = canvas.getContext("2d")
+        ctx.beginPath();
+        ctx.arc(150, 150, 100, 0, 2*Math.PI)
+        ctx.stroke()
+        ctx.fillStyle = "blue"
+        ctx.fill()
+    </script>
+    <canvas id="myCanvas2" width="300px" height="300px" style="border: 1px solid black;"></canvas>
+    <script defer>
+        /**
+         *  @type {HTMLCanvasElement}
+         */
+        canvas = document.querySelector("#myCanvas2")
+        ctx = canvas.getContext("2d")
+        ctx.fillStyle="red"
+        ctx.fillRect(50,50, 200,100)
+    </script>
+    <canvas id="myCanvas3" width="300px" height="300px" style="border: 1px solid black;"></canvas>
+    <script defer>
+        /**
+         *  @type {HTMLCanvasElement}
+         */
+        canvas = document.querySelector("#myCanvas3")
+        ctx = canvas.getContext("2d")
+        ctx.beginPath()
+        ctx.rect(20,20, 150,100)
+        ctx.strokeStyle="blue"
+        ctx.stroke()
+
+        ctx.fillStyle="white"
+        ctx.fillRect(60,40, 150,50)
+    </script>
+     <canvas id="myCanvas4" width="300px" height="300px" style="border: 1px solid black;"></canvas>
+    <script defer>
+        /**
+         *  @type {HTMLCanvasElement}
+         */
+        canvas = document.querySelector("#myCanvas4")
+        ctx = canvas.getContext("2d")
+        ctx.fillStyle="red"
+        ctx.fillRect(30,30, 100,50)
+        ctx.translate(100, 50)
+        
+        ctx.fillStyle="blue"
+        ctx.fillRect(50,50, 120,60)
+        ctx.translate(-100, 150)
+
+        ctx.fillStyle="yellow"
+        ctx.rotate((Math.PI/180)*10)
+        ctx.fillRect(20,0, 100, 50)
+    </script>
+    <canvas id="myCanvas5" width="300px" height="300px" style="border: 1px solid black;"></canvas>
+    <script defer>
+        /**
+         *  @type {HTMLCanvasElement}
+         */
+        canvas = document.querySelector("#myCanvas5")
+        ctx = canvas.getContext("2d")
+        ctx.fillStyle="red"
+        ctx.fillRect(30,30, 100,50)
+        ctx.translate(100, 50)
+        
+        ctx.scale(2,2)
+        ctx.fillStyle="blue"
+        ctx.fillRect(20,20, 120,60)
+        ctx.translate(-50, 50)
+
+        ctx.fillStyle="yellow"
+        ctx.rotate((Math.PI/180)*10)
+        ctx.fillRect(0,0, 100, 50)
+    </script>
+    
+</body>
+</html>

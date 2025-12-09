@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="300px" height="300px" style="border: 1px solid black;"></canvas>
+    <script defer>
+
+        /**
+        * @type {HTMLCanvasElement}
+        */
+
+        // Fora
+        canvas = document.querySelector("#myCanvas")
+        ctx = canvas.getContext("2d")
+        ctx.beginPath()
+        ctx.lineWidth = 4
+        ctx.arc(120, 120, 90, 0, 2*Math.PI)
+        ctx.stroke()
+
+        // Dentro
+        ctx.beginPath()
+        ctx.lineWidth = 2
+        ctx.arc(120, 120, 75, 0, 2*Math.PI)
+        ctx.fillStyle = "#ffeeaa"
+        ctx.fill()
+        ctx.stroke()
+
+        // Centro
+        ctx.beginPath()
+        ctx.lineWidth = 4
+        ctx.arc(120, 120, 10, 0, 2*Math.PI)
+        ctx.stroke()
+
+        // Patillas
+        // Esquerda
+        ctx.beginPath()
+        ctx.lineWidth = 4
+        ctx.moveTo(80, 200)
+        ctx.lineTo(75, 215)
+        ctx.stroke()
+        
+        // Dereita
+        ctx.beginPath()
+        ctx.lineWidth = 4
+        ctx.moveTo(160, 200)
+        ctx.lineTo(165, 215)
+        ctx.stroke()
+
+        // Manillas
+        ctx.beginPath()
+        ctx.lineWidth = 4
+        ctx.moveTo(120, 65)
+        ctx.lineTo(120, 120)
+        ctx.lineTo(147, 90)
+        ctx.stroke()
+
+        // Pao Campana
+        ctx.beginPath()
+        ctx.tranlaste(120,120)
+        
+    </script>
+</body>
+</html>
