@@ -9,3 +9,6 @@ class Review(models.Model):
     rating = models.IntegerField(validators=[MaxValueValidator(5), MinValueValidator(1)])
     def __str__(self):
         return f"{self.user_name}'s review"
+    
+class UserProfile(models.Model):
+    image = models.ImageField(upload_to="images")

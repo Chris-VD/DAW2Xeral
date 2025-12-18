@@ -1,9 +1,23 @@
 from django.http import HttpResponseRedirect
+from django.views import View
+from django.views.generic import ListView
+from django.views.generic.edit import CreateView
 from django.shortcuts import render
-from .forms import ReviewForm
-from .models import Review
+from .forms import ReviewForm, ProfileForm
+from .models import Review, UserProfile
 
 # Create your views here.
+
+class CreateProfileView(CreateView):
+    template_name = "reviews/imaxe.html"
+    model = UserProfile
+    form_class = ProfileForm
+    success_url = "thank-you"
+
+class ProfilesView(ListView):
+    template_name = "reviews/imaxes.html"
+    model = UserProfile
+    context_object_name = "profiles"
 
 def review(request):
     if request.method == 'POST':
@@ -22,3 +36,4 @@ def review(request):
 
 def thank_you(request):
     return render(request, "reviews/thank_you.html")
+

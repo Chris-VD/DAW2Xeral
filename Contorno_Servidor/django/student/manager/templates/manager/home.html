@@ -1,0 +1,6 @@
+<h1>All students!</h1>
+<ul>
+{%for student in students%}
+    <li><a href="{{student.id}}">{{student}}</a>, studying {{student.degree}}</li>
+{%endfor%}
+</ul>
