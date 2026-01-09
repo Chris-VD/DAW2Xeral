@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /* non funciona se non lle cambias o ancho/alto/color en ningún momento */
+            transition: width 1s, height 2s, background-color 3s, transform 2s;
+            transition-timing-function: ease;
+        }
+        div:hover{
+            width: 300px;
+            height: 300px;
+            background-color: blue;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Transición</h1>
+    <div></div>
+</body>
+
+</html>

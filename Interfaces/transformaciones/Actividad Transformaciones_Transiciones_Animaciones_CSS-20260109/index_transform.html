@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformacións</title>
+    <link rel="stylesheet" type="text/css" href="css/styles_transform.css">
+    <style>
+        .container{
+            display: flex;
+            justify-content: space-around;
+        }
+        img{
+            border: 5px solid black;
+            width: 15%;
+        }
+        img:nth-child(1){
+            transform: rotate(45deg) translateY(300px) scale(0.5,1.5) skewX(50deg);
+            transform-origin: 100% 0%;
+        }
+        img:nth-child(2){
+            transform: rotate(15deg) translateX(-100px) scaleX(2) skewY(30deg);
+        }
+        img:nth-child(3){
+            transform: rotate(-15deg) translate(100px, 200px) scaleY(3) skew(100deg, 20deg);
+            transform-origin: 100% 0%;
+        }
+        img:nth-child(4){
+            transform: rotate(-45deg) translatex(-300px) scale(0.5,0.5) skew(30deg, 50deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="img/img1.jpg">
+        <img src="img/img2.jpg">
+        <img src="img/img3.jpg">
+        <img src="img/img4.jpg">
+    </div>    
+</body>
+</html>

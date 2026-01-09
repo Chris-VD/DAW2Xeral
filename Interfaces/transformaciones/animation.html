@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /* nome da animación para usar os keyframes */
+            animation-name: myAnimation;
+            /* duración en s */
+            animation-duration: 4s;
+            /* o que tarda en empezar a animación, con tempo negativo é como se mepzara polo medio (-1 sería que empeza como se tivera pasado 1s) */
+            animation-delay: 1s;
+            /* para poder movela en relación á súa posición inicial */
+            position: relative;
+            /* cantas veces se repite */
+            animation-iteration-count: infinite;
+            /* a dirección da animación */
+            animation-direction: reverse;
+        }
+
+        @keyframes myAnimation {
+            /* en vez de from e to pódese poñer % (0%, 100% e polo medio os que quieras) */
+            from {
+                background-color: red; left: 0px; top: 0px;
+            }
+
+            25%{
+               background-color: blue; left: 200px; top: 0px;
+            }
+            
+            50%{
+                background-color: greenyellow; left: 200px; top: 200px;
+            }
+
+            75%{
+                background-color: yellow; left: 0px; top: 200px;
+            }
+
+            to {
+                background-color: red; left: 0px; top: 0px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Animación CSS</h1>
+    <div></div>
+</body>
+
+</html>
