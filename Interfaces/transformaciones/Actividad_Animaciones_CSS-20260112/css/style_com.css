@@ -1,0 +1,211 @@
+/* Reset básico para que padding e border non afecten o ancho total dos elementos */
+* {
+    box-sizing: border-box;
+}
+
+/* Contedor principal da animación */
+.container {
+    animation-duration: 24s;          /* Duración total do ciclo de animación */
+    animation-iteration-count: infinite;  /* Repetir infinitamente */
+    animation-name: skycolor;        /* Nome da animación do ceo */
+    margin: 100px auto;              /* Centrado vertical/horizontal */
+    position: relative;              /* Contexto de posicionamento para elementos fillos */
+    overflow: hidden;                /* Oculta contido que saia do contedor */
+    width: 1000px;                   /* Ancho fixo (pódese axustar) */
+    height: 1000px;                  /* Alto fixo (cadrado) */
+}
+
+/* Estilos para a imaxe da montaña */
+#montaña img {
+    position: absolute;  /* Posicionamento absoluto respecto ao contedor que permite colocar 
+                            a montaña en coordenadas exactas (left: 0, top, etc.) respecto ao 
+                            seu contedor pai (que ten position: relative). 
+                            Se a montaña tivese position: static (valor por defecto): 
+                            Non poderías usar z-index, left, ou bottom.
+                            A imaxe colocaríase no fluxo normal do documento, posiblemente debaixo do sol/lúa.
+                            A animación perdería o efecto de profundidade.*/
+    left: 0;             /* Aliñado á esquerda */
+    width: 100%;         /* Ancho completo do contedor */
+    height: auto;        /* Alto automático para manter proporción */
+    z-index: 10;         /* Capa superior (sobre sol/lúa) */
+}
+
+/* Estilos comúns para sol e lúa */
+#sol img,
+#lua img {
+    bottom: 3.33%;       /* Posición inicial desde abaixo */
+    left: 3.33%;         /* Posición inicial desde a esquerda */
+    position: absolute;  /* Posicionamento absoluto absolute que permite que o sol e a lúa se movan 
+                            sen afectar a outros elementos (como a montaña ou o fondo).
+                            Poden ser posicionados en calquera coordenada (left, bottom, etc.) 
+                            respecto ao contedor pai (.container), que ten position: relative.
+                            As animacións rotacion-sol e rotacion-lua cambian as propiedades left e bottom 
+                            para simular o movemento circular no ceo. 
+                            Con absolute, estes cambios non alteran o fluxo do documento.*/
+    opacity: 0;          /* Inicialmente invisibles */
+    width: 16.66%;       /* Tamaño relativo ao contedor */
+    height: 16.66%;      /* Tamaño relativo ao contedor */
+    z-index: 8;          /* Capa inferior (baixo a montaña) */
+}
+
+/* ---------------------------- */
+/* ANIMACIÓNS */
+/* ---------------------------- */
+
+/* Animación específica para a lúa */
+#lua img {
+    animation-delay: 10.5s;     /* Espera 10.5s antes de comezar */
+    animation-duration: 24s;    /* Duración igual que o ciclo do ceo */
+    animation-iteration-count: infinite;  /* Repetición infinita */
+    animation-name: rotacion-lua;  /* Nome da animación */
+}
+
+/* Animacións para o sol */
+#sol img {
+    animation-duration: 24s;    /* Duración igual que o ciclo do ceo */
+    animation-iteration-count: infinite;  /* Repetición infinita */
+    animation-name: rotacion-sol, raios;  /* Dúas animacións combinadas */
+}
+
+/* Animación do cambio de cor do ceo (24 segundos de ciclo) */
+@keyframes skycolor {
+    /* Amanecer (0% - 25%) */
+    0% {
+        background: linear-gradient(to bottom, #020111 85%, #191621 100%);  /* Noite escura */
+    }
+    8% {
+        background: linear-gradient(to bottom, #020111 60%, #4a314a 100%);  /* Primeira luz */
+    }
+    16% {
+        background: linear-gradient(to bottom, #4a314a 10%, #946294 100%);  /* Alba */
+    }
+    25% {
+        background: linear-gradient(to bottom, #946294 0%, #c9b981 100%);   /* Amanecer completo */
+    }
+
+    /* Mediodía (25% - 50%) */
+    33% {
+        background: linear-gradient(to bottom, #c3d2d3 0%, #8fdce1 100%);   /* Mañá clara */
+    }
+    50% {
+        background: linear-gradient(to bottom, #8fdce1 0%, #7fbdec 100%);   /* Mediodía brillante */
+    }
+
+    /* Atardecer (50% - 75%) */
+    58% {
+        background: linear-gradient(to bottom, #7fbdec 0%, #51d5ed 100%);   /* Tarde temperá */
+    }
+    66% {
+        background: linear-gradient(to bottom, #51d5ed 0%, #205a64 100%);   /* Tarde */
+    }
+    75% {
+        background: linear-gradient(to bottom, #632082 0%, #22092e 100%);   /* Ocaso */
+    }
+
+    /* Noite (75% - 100%) */
+    83% {
+        background: linear-gradient(to bottom, #22092e 0%, #1f0c1f 100%);   /* Anocer */
+    }
+    91% {
+        background: linear-gradient(to bottom, #1f0c1f 0%, #090109 100%);   /* Noite temperá */
+    }
+    100% {
+        background: linear-gradient(to bottom, #090109 85%, black 100%);    /* Noite pechada */
+    }
+}
+
+/* Animación dos raios do sol (xira 720 graos no mediodía) */
+@keyframes raios {
+    50% {
+        transform: rotate(720deg);  /* Xira dúas voltas completas */
+    }
+    100% {
+        transform: rotate(0deg);    /* Volve á posición inicial */
+    }
+}
+
+/* Animación da traxectoria do sol */
+@keyframes rotacion-sol {
+    0% {
+        opacity: 0;         /* Inicio invisible */
+        left: 1.66%;       /* Posición inicial esquerda */
+        bottom: 3.33%;     /* Posición inicial abaixo */
+    }
+    20% {
+        opacity: 1;         /* Aparece completamente */
+        left: 1.66%;       
+        bottom: 16.66%;    /* Ascende */
+    }
+    50% {
+        left: 50%;         /* Centro horizontal */
+        bottom: 66.66%;    /* Cenit (punto máis alto) */
+    }
+    90% {
+        left: 96.66%;      /* Última posición dereita */
+        bottom: 1.66%;     /* Preto do horizonte */
+        opacity: 1;        /* Aínda visible */
+    }
+    91% {
+        opacity: 0;        /* Desaparece abruptamente */
+    }
+    100% {
+        left: 1.66%;       /* Volve á posición inicial */
+        bottom: 3.33%;    
+    }
+}
+
+/* Animación da traxectoria da lúa (similar ao sol pero con delay) */
+@keyframes rotacion-lua {
+    /* Nota: Os valores son idénticos a rotacion-sol, pero cun delay de 10.5s */
+    0% {
+        opacity: 0;
+        left: 1.66%;
+        bottom: 3.33%;
+    }
+    20% {
+        opacity: 1;
+        left: 1.66%;
+        bottom: 16.66%;
+    }
+    50% {
+        left: 50%;
+        bottom: 66.66%;
+    }
+    90% {
+        left: 96.66%;
+        bottom: 1.66%;
+        opacity: 1;
+    }
+    91% {
+        opacity: 0;
+    }
+    100% {
+        left: 1.66%;
+        bottom: 3.33%;
+    }
+}
+
+/**EXPLICACIÓN DO EXERCICIO
+* 
+Estrutura temporal:
+As animacións están sincronizadas para un ciclo de 24 segundos (simulando 24 horas).
+A lúa ten un delay de 10.5s para que apareza cando o sol está baixando.
+
+Gradientes do ceo:
+O @keyframes skycolor cambia gradualmente de cores para simular:
+Amanecer (tons morados/rosas)
+Mediodía (azuis claros)
+Atardecer (tons laranxas/morados)
+Noite (tons escuros)
+
+Movementos astronómicos:
+Tanto o sol como a lúa seguen a mesma traxectoria (rotacion-sol e rotacion-lua), pero a lúa está desfasada.
+O sol adicionalmente xira sobre si mesmo (raios) ao chegar ao cenit.
+
+Detalles técnicos:
+Uso de z-index para capas (montaña sempre visible enriba).
+opacity: 0 → 1 para transicións suaves de aparición/desaparición.
+
+💡 Consello: Para ver mellor o efecto, reduce a velocidade (animation-duration: 48s) ou usa as ferramentas de desenvolvemento do navegador para pausar/inspeccionar as animacións.
+
+*/

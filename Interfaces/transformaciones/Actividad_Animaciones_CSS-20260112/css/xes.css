@@ -1,0 +1,34 @@
+:root {
+    --transition-duration: 0.5s;
+}
+
+.container {
+    background-color: blueviolet;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    transition-property: background-color, border-radius, transform;
+    transition-duration: var(--transition-duration);
+    transition-timing-function: ease-in, ease-out, linear;
+}
+
+.title {
+    color: brown;
+    background-color: aquamarine;
+    text-align: center;
+    transition-property: color, background-color;
+    transition-duration: var(--transition-duration), calc(var(--transition-duration) * 2);
+    transition-timing-function: ease-out, cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    transition-delay: 0s, 0.1s;
+}
+
+.container:hover {
+    background-color: aquamarine;
+    border-radius: 0%;
+    transform: scale(1.1);
+}
+
+.title:hover {
+    color: aliceblue;
+    background-color: black;
+}

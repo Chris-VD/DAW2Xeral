@@ -1,0 +1,172 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    animation-duration: 24s;
+    animation-iteration-count: infinite;
+    animation-name: skycolor;
+    animation-delay: -4s;
+    margin: 100px auto;
+    position: relative;
+    overflow: visible;
+    max-width: 100%; /* Podes cambiar este valor e todo axustarase automaticamente */
+    height: 1500px;
+}
+
+#montaña img {
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 10; /* sempre visible */
+}
+
+#sol img,
+#lua img {
+    animation-delay: -4s;
+    bottom: -100px; 
+    left: -100px; 
+    position: absolute;
+    width: 16.66%; 
+    height: 22%; 
+    z-index: 8; /* sempre detrás da montaña */
+}
+
+/* ANIMACIÓNS */
+#lua img {
+    animation-delay: 10.5s;
+    animation-duration: 24s;
+    animation-iteration-count: infinite;
+    animation-name: rotacion-lua, raios;
+}
+
+#sol img {
+    animation-duration: 24s;
+    animation-iteration-count: infinite;
+    animation-name: rotacion-sol, raios;
+}
+
+@keyframes skycolor {
+
+    /* Amanecer (0% - 25%) */
+    0% {
+        background: linear-gradient(to bottom, #020111 85%, #191621 100%);
+        /* Noite escura */
+    }
+
+    8% {
+        background: linear-gradient(to bottom, #020111 60%, #4a314a 100%);
+        /* Comezo do amencer */
+    }
+
+    16% {
+        background: linear-gradient(to bottom, #4a314a 10%, #946294 100%);
+        /* Amanecer temperán */
+    }
+
+    25% {
+        background: linear-gradient(to bottom, #946294 0%, #c9b981 100%);
+        /* Amanecer avanzado */
+    }
+
+    /* Sol brillante (mediodía) (25% - 50%) */
+    33% {
+        background: linear-gradient(to bottom, #c3d2d3 0%, #8fdce1 100%);
+        /* Mediodía */
+    }
+
+    50% {
+        background: linear-gradient(to bottom, #8fdce1 0%, #7fbdec 100%);
+        /* Mediodía brillante */
+    }
+
+    /* Atardecer (50% - 75%) */
+    58% {
+        background: linear-gradient(to bottom, #7fbdec 0%, #51d5ed 100%);
+        /* Tarde temperá */
+    }
+
+    66% {
+        background: linear-gradient(to bottom, #51d5ed 0%, #205a64 100%);
+        /* Tarde */
+    }
+
+    75% {
+        background: linear-gradient(to bottom, #632082 0%, #22092e 100%);
+        /* Post-sol */
+    }
+
+    /* Noite (75% - 100%) */
+    83% {
+        background: linear-gradient(to bottom, #22092e 0%, #1f0c1f 100%);
+        /* Anocer */
+    }
+
+    91% {
+        background: linear-gradient(to bottom, #1f0c1f 0%, #090109 100%);
+        /* Noite temperá */
+    }
+
+    100% {
+        background: linear-gradient(to bottom, #090109 85%, black 100%);
+        /* Noite escura */
+    }
+}
+
+
+@keyframes raios {
+    50% {
+        transform: rotate(720deg);
+    }
+    99% {
+        transform: rotate(1080deg);
+    }
+}
+
+@keyframes rotacion-sol {
+    0%{opacity: 0;}
+    20% {
+        opacity: 1;
+        bottom: -100px; 
+        left: -100px;
+    }
+    50% {
+        left: 50%; 
+        bottom: 66.66%;
+        opacity: 1;
+    }
+    88%{opacity: 1;}
+    89% {opacity: 0;}
+    100% {
+        bottom: -100px; 
+        left: 100%; 
+        opacity: 0;
+    }
+}
+
+@keyframes rotacion-lua {
+    0%{opacity: 0;}
+    15% {
+        opacity: 1;
+        bottom: -100px; 
+        left: -100px;
+    }
+    45% {
+        left: 50%; 
+        bottom: 66.66%;
+        opacity: 1;
+    }
+    80%{
+        bottom: -100px; 
+        left: 100%; 
+    }
+    88%{opacity: 1;}
+    89% {opacity: 0;}
+    100% {
+        bottom: -100px; 
+        left: 100%; 
+        opacity: 0;
+    }
+}
