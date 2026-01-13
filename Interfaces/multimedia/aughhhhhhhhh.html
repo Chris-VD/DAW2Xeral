@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img 
+    srcset="peq.webp 480w,
+            med.webp 1024w,
+            gra.webp 1920w"
+    sizes="(max-width: 600px) 100vw,
+            50vw"
+    src="https://cdn2.thecatapi.com/images/MTk1NjgxNQ.jpg"
+    alt="Gato"
+    loading="lazy"
+    decoding="async">
+    <!-- loading="lazy" para que so descargue as imaxes cando vaian a aparecer por pantalla -->
+    <!-- decoding="async" para que a foto non se cargue de todo ata que estea completamente descargada -->
+    <picture>
+        <source media="(min-width: 1024px)" srcset="gra.webp">
+        <source media="(min-width: 800px)" srcset="med.webp">
+        <source srcset="peq.webp">
+        <img src="https://cdn2.thecatapi.com/images/MTk1NjgxNQ.jpg" alt="Gato" loading="lazy" decoding="async">
+    </picture>
+    <video controls width="100%" src="video1.mp4" poster="gra.webp" autoplay loop>
+        <!-- <video controls width="100%"> -->
+        <!-- <source src="video1.mp4" type="video/mp4" autoplay loop poster="gra.webp"> -->
+        <track src="subs.vtt"
+            kind="subtitles"
+            srclang="es"
+            label="Español"
+            default>
+        </track>
+    </video>
+    <iframe width="500px" height="300px" src="https://www.youtube.com/embed/3HD43lvNvCA"
+    ></iframe>
+</body>
+</html>
