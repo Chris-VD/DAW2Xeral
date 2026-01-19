@@ -1,0 +1,6 @@
+<h1>Delet Student</h1>
+<p>Are you sure you want to delete student {{student.name}} (ID: {{student.id}})?</p>
+<form method="POST">
+    {%csrf_token%}
+    <button type="submit">Yes</button>
+</form> <button><a style="text-decoration: none; color: black; "href="/home/">No</a></button>

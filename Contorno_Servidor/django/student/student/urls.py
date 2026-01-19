@@ -21,6 +21,8 @@ from manager import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('addStudent/', views.addStudent, name="addStudent"),
+    path('editStudent/<pk>', views.EditStudent.as_view(), name="editStudent"),
+    path('deleteStudent/<pk>', views.DeleteStudent.as_view(), name="deleteStudent"),
     path('home/', views.home, name="home"),
     path('home/<int:student_id>', views.student, name="student"),
 ]
