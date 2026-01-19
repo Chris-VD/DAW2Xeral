@@ -23,4 +23,5 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('allPosts/', views.all, name="all"),
     path('<int:post_id>/', views.details),
+    path("createPost/", views.CreatePost.as_view(), name="createPost")
 ]
