@@ -1,0 +1,8 @@
+<h1>Read later list</h1>
+<a href="{%url 'home'%}">Home screen</a><br>
+<ul>
+    {{list}}
+    {%for rl in list%}
+        <li><a href="/{{rl.id}}">{{rl.title}}</a> by {{rl.author}}</li>
+    {%endfor%}
+</ul>

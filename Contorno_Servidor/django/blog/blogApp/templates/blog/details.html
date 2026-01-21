@@ -1,6 +1,11 @@
 {%load static%}
 <a href="{%url 'home'%}">Home screen</a>
 <h1>{{post.title}}</h1>
+{%if post.id in request.session.rll%}
+    <a href="{% url 'readLater'%}?id=-{{post.id}}">Remove from the Read Later list</a>
+{%else%}
+    <a href="{% url 'readLater'%}?id={{post.id}}">Add to the Read Later list</a>
+{%endif%}
 <p>By: <a href="mailto:{{post.author.email}}">{{post.author}}</a></p>
 <label for="tags">Tags:</label>
 <ul>
@@ -11,5 +16,14 @@
 <span>{{post.date|date:"d \o\f M - Y"}}</span>
 <h2>{{post.excerpt}}</h2>
 <p>{{post.slug}}</p>
-<img src="{%static 'blog/images/'|add:post.image_name%}" style="width:200px" alt="{{post.image_name}}">
+<img src="{{post.image.url}}" style="width:200px" alt="{{post.image_name}}">
 <p>{{post.content}}</p>
+<br>
+<h2>Comments</h2>
+{%include "base/comments.html"%}
+<h4>Add a comment</h4>
+<form action="" method="POST">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button type="submit">Comment</button>
+</form>

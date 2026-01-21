@@ -1,0 +1,10 @@
+{%block content%}
+<ul>
+    {%for comment in comments%}
+        <li>{%if comment.user_name%}
+                By {%if comment.user_email%}<a href="mailto:{{comment.user_email}}">{%endif%}{{comment.user_name}}</a>: 
+            {%endif%}
+            {{comment.comment}}</li>
+    {%endfor%}
+</ul>
+{%endblock%}

@@ -17,11 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from blogApp import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name="home"),
-    path('allPosts/', views.all, name="all"),
-    path('<int:post_id>/', views.details),
-    path("createPost/", views.CreatePost.as_view(), name="createPost")
-]
+    path('', views.Home.as_view(), name="home"),
+    path('allPosts/', views.PostListView.as_view(), name="all"),
+    path('<int:pk>/', views.PostDetailView.as_view(), name="details"),
+    path("createPost/", views.CreatePost.as_view(), name="createPost"),
+    path("readLater/", views.ReadLaterView.as_view(), name="readLater"),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

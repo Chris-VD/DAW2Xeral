@@ -29,3 +29,12 @@ class Post(models.Model):
 
     def __str__(self):
         return f"{self.title} by {self.author}"
+    
+class Comment(models.Model):
+    comment = models.TextField(max_length=200)
+    user_name = models.CharField(max_length=100, null=True)
+    user_email = models.EmailField(null=True)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=False)
+
+    def __srt__(self):
+        return self.id

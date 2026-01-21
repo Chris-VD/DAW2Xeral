@@ -1,6 +1,7 @@
 {%load static%}
 <h1>Welcome to the main page</h1>
-<a href="{%url 'all'%}">All posts</a><br>
+<a href="{%url 'all'%}">All posts</a> - 
+<a href="{%url 'readLater'%}">Read later</a><br>
 <img src="{%static 'blogS/dog.jpg'%}" alt="dawg" style="height: 200px;"><br>
 {%include "base/post.html"%}
 <a href="/createPost">Add new Post</a>
