@@ -1,0 +1,14 @@
+// 1. Primero, se definen las personalizaciones
+$primary: #8a2be2; // Cambia el color primario a violeta
+$font-family-base: 'Helvetica Neue', sans-serif; // Cambia la fuente global
+$grid-breakpoints: (
+  xs: 0,
+  sm: 600px,
+  md: 850px,
+  lg: 1100px,
+  xl: 1500px,
+  xxl: 1920px
+);
+
+// 2. Luego, importa Bootstrap (esto suele apuntar a node_modules)
+@import "../node_modules/bootstrap/scss/bootstrap";

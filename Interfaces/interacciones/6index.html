@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6</title>
+    <style>
+        label {
+            margin-top: 40px;
+            position: relative;
+        }
+
+        input {
+            padding: 10px 0px;
+        }
+        input:focus{
+            span{
+                position: relative;
+                bottom: 50px;
+            }
+        }
+
+        span {
+            position: absolute;
+            left: 10px;
+            transition-duration: 300ms;
+        }
+    </style>
+</head>
+
+<body>
+
+    <label for="text">
+        <span>Label</span>
+        <input type="text" name="text" id="text">
+    </label>
+</body>
+
+</html>
