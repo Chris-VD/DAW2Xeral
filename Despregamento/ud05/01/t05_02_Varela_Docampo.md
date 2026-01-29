@@ -20,7 +20,7 @@ Realiza a migración. Despois visita a URL para comprobar que non hai erros `htt
 
  e que a aplicación funciona correctamente. **Realiza capturas** do funcionamento da aplicación.
 
-![Screenshot_20260127_213517](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/Screenshot_20260127_213517.png)
+![Screenshot_20260127_213517](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud05/01/capturas/Screenshot_20260127_213517.png)
 
 **Elimina o directorio `vendor`**
 
@@ -47,9 +47,9 @@ echo $APP_KEY
 
 1. Crea o o ficheiro `docker-compose.prod.yaml`
 
- e `entrypoint.prod.sh`
+ e `entrypoint.prod.sh` para produción. Modifica tan só as variables de conexión a base de  datos polas que tiñamos en Aiven, e as necesarias para indicar que a  aplicación está en produción e engade a `APP_KEY`
 
-1.  para produción. Modifica tan só as variables de conexión a base de  datos polas que tiñamos en Aiven. Mapea o servizo da aplicación para que escoite polo **porto 9001**.
+1.  ca clave xerada no paso anterior. Mapea o servizo da aplicación para que escoite polo **porto 9001**.
 
 Explicación Podemos crear novos comandos `make` para poder probar a posta en produción da nosa aplicación. Neste caso  as probas podémolas facer no propio equipo e comprobar que todo funciona correctamente.
 
@@ -70,19 +70,19 @@ deploy-stop:
 
 1. Pon en marcha a aplicación en produción e comproba que funciona a URL: http://localhost:9001/api/libros. **Entrega capturas** dos ficheiros `Dockerfile.prod`
 
-   ![Screenshot_20260127_231021](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/Screenshot_20260127_231021.png)
+   ![image-20260129103930681](/home/sanclemente.local/a24christianvd/.config/Typora/typora-user-images/image-20260129103930681.png)
 
 , `docker-compose.prod.yaml`, 
 
-![Screenshot_20260127_231045](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/Screenshot_20260127_231045.png)
+![image-20260129105359196](/home/sanclemente.local/a24christianvd/.config/Typora/typora-user-images/image-20260129105359196.png)
 
 `entrypoint.prod.yaml` 
 
-![Screenshot_20260127_231106](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/Screenshot_20260127_231106.png)
+![image-20260129104008864](/home/sanclemente.local/a24christianvd/.config/Typora/typora-user-images/image-20260129104008864.png)
 
 e `Makefile`
 
-![Screenshot_20260127_231121](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/Screenshot_20260127_231121.png)
+![image-20260129104030346](/home/sanclemente.local/a24christianvd/.config/Typora/typora-user-images/image-20260129104030346.png)
 
 1. .
 2. Para o despregue, e agora sube ao repositorio tódolos cambios.
@@ -99,7 +99,7 @@ No repositorio `Arquetipo de Laravel`
 
  crea un ficheiro `Readme.md` explicando en que consiste o arquetipo na súa totalidade: que contén, como funciona, para que serve, etc. **Entrega capturas** da totalidade do ficheiro `Readme.md`
 
-![Screenshot_20260127_231845](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/Screenshot_20260127_231845.png)
+![Screenshot_20260127_231845](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud05/01/capturas/Screenshot_20260127_231845.png)
 
 1. .
 
@@ -129,7 +129,7 @@ Instala Docker: https://docs.docker.com/engine/install/debian/. E realiza a conf
 
 )
 
-![2026-01-28_11-06](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/2026-01-28_11-06.png)
+![2026-01-28_11-06](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud05/01/capturas/2026-01-28_11-06.png)
 
 Apaga a máquina e crea unha nova instantánea `docker_instalado`
 
@@ -172,11 +172,11 @@ Explicación Para finalizar a tarefa, tan só necesitamos o noso repositorio par
 
 Proba que todo funciona utilizando a seguinte URL: `http://192.168.56.101:9001/api/libros`
 
-. **Entrega captura** onde se vexa a aplicación funcionando.
+1. . **Entrega captura** onde se vexa a aplicación funcionando.
 
-![2026-01-28_11-27](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/2026-01-28_11-27.png)
+   ![image-20260129104201526](/home/sanclemente.local/a24christianvd/.config/Typora/typora-user-images/image-20260129104201526.png)
 
-
+------
 
 #### Exercicio 3: CI/CD para a construción da imaxe de produción
 
@@ -285,9 +285,7 @@ Executor
 
  e desprega a lapela `Runners`. Verás agora que tes o `runner` xa configurado. **Entrega capturas** do `runner`
 
-![Screenshot_20260128_193802](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/Screenshot_20260128_193802.png)
-
-1. .
+![Screenshot_20260128_193802](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud05/01/capturas/Screenshot_20260128_193802.png)
 
 Explicación Agora crearemos un segundo `runner`
 
@@ -313,7 +311,9 @@ Acude de novo `Ajustes > CI/CD`
 
  e desprega a lapela `Runners`. Verás agora que tes o novo `runner` xa configurado. **Entrega capturas** do `runner`
 
-![Screenshot_20260128_194153](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/Screenshot_20260128_194153.png).
+.
+
+![Screenshot_20260128_194153](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud05/01/capturas/Screenshot_20260128_194153.png)
 
 Executa `gitlab-runner run`
 
@@ -325,7 +325,9 @@ Acude de novo `Ajustes > CI/CD`
 
  e desprega a lapela `Runners`. Verás agora que tes os dous `runners` en funcionamento. **Entrega capturas** do `runner`
 
-1. .![Screenshot_20260128_194223](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/Screenshot_20260128_194223.png)
+.![Screenshot_20260128_194223](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud05/01/capturas/Screenshot_20260128_194223.png)
+
+1. 
 
 > Senón tes verificada a conta en GitLb.com, para que funcione debes desactivar os `runners`
 
@@ -409,7 +411,9 @@ Inicia sesión en `DockerHub`
 
 1.  e `push` e a túa imaxe debería subirse a conta de DockerHub. **Entrega capturas** do ficheiro de definición de CI/CD e das túas imaxes en DockerHub.
 
-   ![Screenshot_20260128_202956](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/Screenshot_20260128_202956.png)
+   ![Screenshot_20260128_202956](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud05/01/capturas/Screenshot_20260128_202956.png)
+
+   ![Screenshot_20260128_203008](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud05/01/capturas/Screenshot_20260128_203008.png)
 
 Explicación Unha vez que temos a nosa imaxe nun rexistro de imaxes Docker, podemos modificar o noso `docker-compose.yaml`
 
@@ -446,7 +450,7 @@ Explicación Vamos agora deixar preparado no noso servidor de produción ca últ
 
 Proba que todo funciona utilizando a seguinte URL: `http://192.168.56.101:9001/api/libros`
 
-1. .
+![image-20260129104516384](/home/sanclemente.local/a24christianvd/.config/Typora/typora-user-images/image-20260129104516384.png)
 
 ------
 
@@ -512,7 +516,7 @@ Explicación O repositorio que temos clonado no servidor de produción utiliza o
 
 1. Para o despregue de Laravel se é que se está executando. Borra o repositorio, e volve clonalo pero agora utilizando SSH. **Entre capturas** da execución do comando e da súa saída.
 
-   ![Screenshot_20260128_223154](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/Screenshot_20260128_223154.png)
+   ![Screenshot_20260128_223154](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud05/01/capturas/Screenshot_20260128_223154.png)
 
 Explicación Agora debemos crear o ficheiro que define a acción e a URL do `webhook`
 
@@ -535,13 +539,13 @@ Explicación Agora debemos crear o ficheiro que define a acción e a URL do `web
 
 Dende o equipo anfitrión executa a chamada HTTP, pódelo facer mediante un comando `curl`. **Entrega capturas** da execución do comando `curl` e da saída do mesmo.
 
-![Screenshot_20260128_233133](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/Screenshot_20260128_233133.png)
+![Screenshot_20260128_233133](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud05/01/capturas/Screenshot_20260128_233133.png)
 
 Ademais na consola onde se está executando a aplicación `weebhook`
 
 1.  podes ver a saída producida pola execución da acción. **Entrega captura** disto.
 
-   ![Screenshot_20260128_233326](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/Screenshot_20260128_233326.png)
+   ![Screenshot_20260128_233326](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud05/01/capturas/Screenshot_20260128_233326.png)
 
 Explicación Para finalizar, podemos facer que cando se cree unha nova imaxe para  produción se actualice automaticamente a imaxe que está despregada,  permitindo realizar unha automatización total.
 
@@ -561,7 +565,7 @@ Comproba que se executou correctamente o *script* vendo a saída do comando `web
 
 1. . **Entrega capturas** desta comprobación.
 
-   ![Screenshot_20260129_000504](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/Screenshot_20260129_000504.png)
+   ![Screenshot_20260129_000504](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud05/01/capturas/Screenshot_20260129_000504.png)
 
 Explicación Como exemplo final, vamos facer unha modificación na aplicación. Veremos como con só facer un `push` ao repositorio `git` se despregará a nova versión da aplicación de xeito automatico.
 
@@ -569,7 +573,7 @@ Explicación Como exemplo final, vamos facer unha modificación na aplicación. 
 
 . Verás a pantalla de inicio de Laravel. **Entrega captura** desta páxina.
 
-![Screenshot_20260129_000602](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/Screenshot_20260129_000602.png)
+![image-20260129104651235](/home/sanclemente.local/a24christianvd/.config/Typora/typora-user-images/image-20260129104651235.png)
 
 Abre o repositorio no equipo anfitrión. Modifica o ficheiro `src/resources/views/welcome.blade.php`
 
@@ -585,7 +589,7 @@ Abre a URL `http://192.168.56.101:9001`
 
 1. . Verás a pantalla de inicio de Laravel. **Entrega captura** desta páxina.
 
-   ![Screenshot_20260129_000602](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/Screenshot_20260129_000602.png)
+   ![image-20260129104706419](/home/sanclemente.local/a24christianvd/.config/Typora/typora-user-images/image-20260129104706419.png)
 
 ------
 
@@ -733,23 +737,23 @@ Engade no ficheiro de definición de CI/CD para que se realice o despregue autom
 
 **Entrega capturas** do ficheiro `Dockerfile.prod`
 
-![Screenshot_20260129_030343](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/Screenshot_20260129_030343.png)
+![image-20260129114556918](/home/sanclemente.local/a24christianvd/.config/Typora/typora-user-images/image-20260129114556918.png)
 
-, `docker-compose.prod.yaml`,
+, `docker-compose.prod.yaml`, 
 
-![Screenshot_20260129_030405](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/Screenshot_20260129_030405.png)
+![image-20260129114646667](/home/sanclemente.local/a24christianvd/.config/Typora/typora-user-images/image-20260129114646667.png)
 
- `hooks.json`,  
+`hooks.json`,
 
-![Screenshot_20260129_030623](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/Screenshot_20260129_030623.png)
+![Screenshot_20260129_030623](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud05/01/capturas/Screenshot_20260129_030623.png)
 
-`.gitlab-ci.yml` 
+  `.gitlab-ci.yml`
 
-![Screenshot_20260129_030533](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/Screenshot_20260129_030533.png)
+![Screenshot_20260129_030533](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud05/01/capturas/Screenshot_20260129_030533.png)
 
-e `Makefile`
+ e `Makefile`
 
-![Screenshot_20260129_030547](/home/infe/Documents/DAW2Xeral/Despregamento/ud05/01/capturas/Screenshot_20260129_030547.png)
+![image-20260129114801128](/home/sanclemente.local/a24christianvd/.config/Typora/typora-user-images/image-20260129114801128.png)
 
 .
 
