@@ -74,11 +74,11 @@ deploy-stop:
 
 , `docker-compose.prod.yaml`, 
 
-![image-20260129105359196](/home/sanclemente.local/a24christianvd/.config/Typora/typora-user-images/image-20260129105359196.png)
+![image(3)](/home/sanclemente.local/a24christianvd/Documentos/misc/despregue-laravel/image(3).png)
 
 `entrypoint.prod.yaml` 
 
-![image-20260129104008864](/home/sanclemente.local/a24christianvd/.config/Typora/typora-user-images/image-20260129104008864.png)
+![image(2)](/home/sanclemente.local/a24christianvd/Documentos/misc/despregue-laravel/image(2).png)
 
 e `Makefile`
 
@@ -413,7 +413,7 @@ Inicia sesión en `DockerHub`
 
    ![Screenshot_20260128_202956](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud05/01/capturas/Screenshot_20260128_202956.png)
 
-   ![Screenshot_20260128_203008](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud05/01/capturas/Screenshot_20260128_203008.png)
+   ![2026-01-30_13-16](/home/sanclemente.local/a24christianvd/Documentos/misc/despregue-laravel/2026-01-30_13-16.png)
 
 Explicación Unha vez que temos a nosa imaxe nun rexistro de imaxes Docker, podemos modificar o noso `docker-compose.yaml`
 
@@ -573,7 +573,7 @@ Explicación Como exemplo final, vamos facer unha modificación na aplicación. 
 
 . Verás a pantalla de inicio de Laravel. **Entrega captura** desta páxina.
 
-![image-20260129104651235](/home/sanclemente.local/a24christianvd/.config/Typora/typora-user-images/image-20260129104651235.png)
+![image (copia)](/home/sanclemente.local/a24christianvd/Documentos/misc/despregue-laravel/image (copia).png)
 
 Abre o repositorio no equipo anfitrión. Modifica o ficheiro `src/resources/views/welcome.blade.php`
 
@@ -589,7 +589,7 @@ Abre a URL `http://192.168.56.101:9001`
 
 1. . Verás a pantalla de inicio de Laravel. **Entrega captura** desta páxina.
 
-   ![image-20260129104706419](/home/sanclemente.local/a24christianvd/.config/Typora/typora-user-images/image-20260129104706419.png)
+   ![image(1)](/home/sanclemente.local/a24christianvd/Documentos/misc/despregue-laravel/image(1).png)
 
 ------
 
@@ -737,7 +737,7 @@ Engade no ficheiro de definición de CI/CD para que se realice o despregue autom
 
 **Entrega capturas** do ficheiro `Dockerfile.prod`
 
-![image-20260129114556918](/home/sanclemente.local/a24christianvd/.config/Typora/typora-user-images/image-20260129114556918.png)
+![image(7)](/home/sanclemente.local/a24christianvd/Documentos/misc/despregue-laravel/image(7).png)
 
 , `docker-compose.prod.yaml`, 
 
@@ -749,7 +749,7 @@ Engade no ficheiro de definición de CI/CD para que se realice o despregue autom
 
   `.gitlab-ci.yml`
 
-![Screenshot_20260129_030533](/home/sanclemente.local/a24christianvd/Documentos/Despregamento/ud05/01/capturas/Screenshot_20260129_030533.png)
+![image(5)](/home/sanclemente.local/a24christianvd/Documentos/misc/despregue-laravel/image(5).png)
 
  e `Makefile`
 
