@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8</title>
+    <style>
+        body{
+            position: relative;
+        }
+        a{
+            color: black;
+            text-decoration: none;
+            padding: 4px;
+            margin: 20px;
+            border: 2px solid grey;
+        }
+        span{
+            border: 2px solid grey;
+            position: absolute;
+            display: none;
+        }
+        span:target{
+            top: 150%;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <a id="l1" href="#a1">Pestaña 1</a>
+    <span id="a1">T1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea asperiores iste itaque perspiciatis quas temporibus cum, est eveniet iure ratione!</span>
+    <a id="l2" href="#a2">Pestaña 2</a>
+    <span id="a2">T2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa facere, inventore quaerat dolores ratione odit labore saepe. Illum, suscipit. Minima.</span>
+    <a id="l3" href="#a3">Pestaña 3</a>
+    <span id="a3">T3 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit nulla amet mollitia consequuntur expedita quas reiciendis possimus omnis aliquid ea!</span>
+</body>
+
+</html>
