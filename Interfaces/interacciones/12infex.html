@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12</title>
+</head>
+<body>
+    <label for="ps">Password:</label><br>
+    <input type="password" name="ps" id="ps"><img src="https://i.ytimg.com/vi/zqNZ9df0tho/maxresdefault.jpg" width="100px" id="eye">
+    <script defer>
+        const ip = document.querySelector("#ps")
+        const img = document.querySelector("#eye")
+        img.addEventListener("click", ()=>{
+            if (ip.type == "password") ip.type = "text"
+            else ip.type = "password"
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15</title>
+</head>
+<body>
+    <img height="500px" src="" alt="" id="img"><br>
+    <button id="btn">Ver otro gato</button>
+    <script defer>
+        const url = "https://api.thecatapi.com/v1/images/search"
+        const btn = document.querySelector("#btn")
+        fetch(url)
+                .then((r)=>r.json())
+                .then((d)=>img.src = d[0].url)
+        btn.addEventListener("click", ()=>{
+            fetch(url)
+                .then((r)=>r.json())
+                .then((d)=>img.src = d[0].url)
+        })
+    </script>
+</body>
+</html>

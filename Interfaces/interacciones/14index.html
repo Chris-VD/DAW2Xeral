@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14</title>
+</head>
+<body>
+    <input id="p1" type="password">
+    <input id="p2" type="password">
+    <script defer>
+        const p1 = document.querySelector("#p1")
+        const p2 = document.querySelector("#p2")
+        p2.addEventListener("blur", ()=>{
+            if (p1.value == p2.value) p2.setAttribute("style", "border: 2px solid green")
+            else p2.setAttribute("style", "border: 2px solid red")
+        })
+    </script>
+</body>
+</html>
