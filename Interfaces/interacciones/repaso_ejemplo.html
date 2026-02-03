@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Interactiva Final</title>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --secondary: #10B981;
+            --dark: #1f2937;
+            --light: #f3f4f6;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+
+        /* 1. NAVEGACIÓN*/
+        nav {
+            background: white;
+            display: flex;
+            justify-content: center;
+            padding: 0 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item {
+            padding: 25px 20px;
+        }
+        .nav-item:hover{
+            transform: translate(0,-5px) scale(0.8,0.8);
+            padding-bottom: 5px;
+        }
+        .nav-item:hover > a{
+            color: var(--primary);
+        }
+
+
+        .nav-item a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .nav-item:hover > a + .dropdown-content{
+            display: block;
+        }
+
+        /* 2. MENU DESPLEGABLE */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 180px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 0 0 8px 8px;
+            padding: 10px 0;
+        }
+        .dropdown-content:hover{
+            display: block;
+        }
+
+        .dropdown-content a {
+            padding: 10px 20px;
+            display: block;
+            font-size: 14px;
+        }
+
+        /* 3. GALERÍA ACORDEÓN */
+        .section-title { text-align: center; margin: 50px 0 20px; }
+
+        .accordion-gallery {
+            display: flex;
+            width: 90%;
+            max-width: 1500px;
+            height: 450px;
+            margin: 0 auto;
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            flex: 1;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: flex 0.5s;
+        }
+
+
+        .gallery-item:hover {
+            flex: 3;
+            
+            img{
+                filter: brightness(70%);
+            }
+            .item-info{
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .gallery-item img {
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        .item-info {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 2;
+            transform: translate(-50%, -50%) scale(0);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.5s;
+        }
+
+        .item-info h3 { margin: 0 0 10px 0; color: var(--primary); }
+        .item-info p { margin: 0; font-size: 0.9rem; line-height: 1.4; }
+
+        /* --- 4. TABS MULTIMEDIA (CSS PURO) --- */
+        .tabs-wrapper { max-width: 1200px; margin: 0 auto 60px; text-align: center; padding: 20px;}
+
+        .tabs-nav { display: inline-flex; background: #e2e8f0; padding: 6px; border-radius: 50px; margin-bottom: 30px; }
+        .tabs-nav label { padding: 12px 30px; border-radius: 40px; font-weight: 600; }
+
+        .video-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+
+        #vid1:checked ~ .tabs-nav label[for="vid1"],
+        #vid2:checked ~ .tabs-nav label[for="vid2"] { background: var(--primary); color: white; }
+
+        #vid1:checked ~ .content-area #box1,
+        #vid2:checked ~ .content-area #box2 { display: flex; }
+
+        .media-box { width: 100%; background: #000; line-height: 0; }
+        video { width: 100%; display: block; }
+        .card-text { padding: 30px; text-align: left; }
+
+        /* --- 5. IMAGEN RESPONSIVE (PICTURE) --- */
+        .responsive-section { background: white; padding: 60px 20px; text-align: center; border-top: 1px solid #e5e7eb; }
+
+
+        /* RATING ESTRELLAS */
+        .rating { display: flex; flex-direction: row-reverse; font-size: 30px; justify-content: center;}
+        .rating label { color: #ccc; }
+
+        /* --- 6. MODAL FORMULARIO Y FIRMA (CANVAS) --- */
+        .cta-section { padding: 80px 20px; text-align: center; background: #fafafa; }
+        .btn-primary {
+            background: var(--primary); color: white; border: none; padding: 15px 40px;
+            font-size: 1.1rem; border-radius: 50px; cursor: pointer; font-weight: bold;
+            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4); transition: 0.3s;
+        }
+
+        /* Estilos del Modal */
+        .modal-overlay {
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); backdrop-filter: blur(5px);
+            align-items: center; justify-content: center;
+        }
+        .modal-content {
+            background: white; padding: 40px; border-radius: 20px; width: 90%; max-width: 500px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2); 
+        }
+        .close-btn { font-size: 24px; cursor: pointer; color: #999; }
+        
+        /* Estilos del Formulario */
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #444; }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px;
+            font-family: inherit; box-sizing: border-box;
+        }
+
+        /* Estilos Canvas Firma */
+        .signature-pad {
+            border: 2px dashed #ccc; border-radius: 10px; background: #fffcfc;
+        }
+        .sig-controls { display: flex; justify-content: space-between; margin-top: 5px; font-size: 0.9rem; }
+        .btn-clear { background: none; border: none; color: var(--danger); font-weight: 600; }
+        
+
+        .content-placeholder { padding: 80px 20px; text-align: center; }
+
+        @media (max-width: 568px) {
+            .accordion-gallery {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                align-items: center;
+            }
+            .dropdown-content{
+                left: 120px;
+                top: -35px;
+                float: right;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul class="nav-list">
+            <li class="nav-item"><a href="#">Inicio</a></li>
+            <li class="nav-item">
+                <a href="#">Servicios ▼</a>
+                <div class="dropdown-content">
+                    <a href="#">Diseño Web</a>
+                    <a href="#">Marketing</a>
+                    <a href="#">SEO</a>
+                </div>
+            </li>
+            <li class="nav-item"><a href="#">Portafolio</a></li>
+            <li class="nav-item"><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <div class="section-title">
+        <h1>Explora Proyectos</h1>
+    </div>
+
+    <div class="accordion-gallery">
+        <div class="gallery-item">
+            <img src="https://picsum.photos/id/101/800/600" alt="Naturaleza">
+            <div class="item-info">
+                <h3>Montañas</h3>
+                <p>Explora picos nevados y aire puro.</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://picsum.photos/id/102/800/600" alt="Arquitectura">
+            <div class="item-info">
+                <h3>Estructuras</h3>
+                <p>Diseño moderno en la gran ciudad.</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://picsum.photos/id/103/800/600" alt="Tech">
+            <div class="item-info">
+                <h3>Digital</h3>
+                <p>Innovación y código de vanguardia.</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://picsum.photos/id/104/800/600" alt="Vida">
+            <div class="item-info">
+                <h3>Estilo</h3>
+                <p>Minimalismo para tu día a día.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="tabs-wrapper">
+        <h2>Zona de Video</h2>
+        <input type="radio" id="vid1" name="video-control" checked>
+        <input type="radio" id="vid2" name="video-control">
+        <div class="tabs-nav">
+            <label for="vid1">Video Loop</label>
+            <label for="vid2">Video Accesible</label>
+        </div>
+        <div class="content-area">
+            <div id="box1" class="video-card">
+                <div class="media-box">
+                    <video src="../multimedia/video1.mp4" muted autoplay loop></video>
+                </div>
+                <div class="card-text"><h3>Autoplay</h3><p>Video ambiental.</p></div>
+            </div>
+            <div id="box2" class="video-card">
+                <div class="media-box"></div>
+                <div class="card-text"><h3>Accesible</h3><p>Con controles.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="responsive-section">
+        <h2>Adaptabilidad</h2>
+        <div class="picture-container">
+                <img src="https://picsum.photos/1200/500">
+                <img src="https://picsum.photos/600/900" alt="Imagen adaptativa">
+        </div>
+        <div class="demo">
+            <div class="rating">
+                <input type="radio" name="star" id="s5"><label for="s5">★</label>
+                <input type="radio" name="star" id="s4"><label for="s4">★</label>
+                <input type="radio" name="star" id="s3"><label for="s3">★</label>
+                <input type="radio" name="star" id="s2"><label for="s2">★</label>
+                <input type="radio" name="star" id="s1"><label for="s1">★</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-section" id="contacto">
+        <h2>¿Trabajamos juntos?</h2>
+        <p style="margin-bottom: 30px; color: #666;">Firma tu propuesta digitalmente y envíala.</p>
+        <button class="btn-primary">Contactar y Firmar</button>
+    </div>
+
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 style="margin-top:0;">Formulario de Contacto</h2>
+            
+            <form id="contactForm">
+                <div class="form-group">
+                    <label>Nombre Completo</label>
+                    <input type="text" required placeholder="Tu nombre">
+                </div>
+                
+                <div class="form-group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" required placeholder="tucorreo@ejemplo.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Firma Digital (Requerida)</label>
+                    <canvas id="sigCanvas" class="signature-pad" width="420" height="150"></canvas>
+                    <div class="sig-controls">
+                        <span style="color:#888; font-size:0.8rem;">Dibuja tu firma arriba</span>
+                        <button type="button" class="btn-clear">Borrar firma</button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width:100%; margin-top:10px;">Validar y Enviar</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
+
+</body>
+</html>

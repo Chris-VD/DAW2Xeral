@@ -1,0 +1,240 @@
+<!Doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <style>
+    /* 1. Botón Fantasma */
+    .boton-fantasma {
+      background-color: transparent;
+      border: 2px solid #3498db;
+      color: #3498db;
+      
+      padding: 10px 20px;
+      font-size: 16px;
+      font-family: sans-serif;
+      cursor: pointer;  
+      border-radius: 5px;         
+      text-transform: uppercase;   
+      font-weight: bold;
+      margin-bottom: 20px;
+
+      transition: all 3s ease;
+    }
+
+    .boton-fantasma:hover {
+      background-color: #3498db; 
+      color: white;                 
+    }
+
+    /* 2. Galeria */
+    .galeria {
+        display: flex;
+        padding: 20px;
+        gap: 20px;
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+    .galeria:hover img {
+        opacity: 0.3;      
+    }
+
+    .galeria img:hover {
+        opacity: 1;       
+        transform: scale(1.1) rotate(3deg);
+        z-index: 2;
+    }
+
+    /* 3. Modo Oscuro */
+    body:has(#toggle:checked) {
+        background-color: #222;
+        color: white;
+    }
+
+    body {
+        transition: all 0.5s;
+        background-color: white;
+        color: black;
+    }
+
+    .switch { /* Label (parte que no quiero visible pero sobre la que referenciar) */
+        display: inline-block;
+        width: 50px;
+        height: 25px;
+        position: relative;
+    }
+
+    .switch input { opacity: 0; width: 0; height: 0; }
+
+    .slider { /* Parte grisácea */
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-color: #ccc;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.4s;
+    }
+
+    .slider:before { /* Parte blanca (ques se desplaza para activar/desactivar el modo oscuro) */
+        position: absolute;
+        content: "";
+        height: 19px; width: 19px;
+        left: 3px; bottom: 3px;
+        background-color: white;
+        border-radius: 50%;
+        transition: all 0.4s;
+    }
+
+    input:checked + .slider {
+        background-color: #2196F3;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(24px);
+    }
+
+    /* 4. Tooltip */
+    .tooltip {
+        position: relative;
+        cursor: help;
+        border-bottom: 1px dotted #555;
+        font-weight: bold;
+    }
+
+    .tooltip-box {
+        position: absolute;
+        bottom: 120%;
+        left: 50%; 
+        transform: translateX(-50%);
+        
+        background-color: #000;
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 14px;
+        width: 100px;      
+        text-align: center;
+        z-index: 10;       
+        
+        opacity: 0;
+        visibility: hidden;
+        
+        transition: opacity 0.3s, bottom 0.3s;
+    }
+
+    .tooltip:hover .tooltip-box {
+        opacity: 1;
+        visibility: visible;
+        bottom: 130%;
+    }
+
+    /* 5. Spinner */
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border-top: 5px solid #3498db; 
+
+        animation: rotacion 1s linear infinite;
+    }
+
+    @keyframes rotacion {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    /* 6. Input Flotante */
+    .form {
+        position: relative;
+        margin: 20px;
+        width: 300px;
+    }
+
+    .input-flotante {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        outline: none;
+        font-size: 16px;
+        background: transparent;
+    }
+
+    .label-flotante {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        color: #999;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        pointer-events: none;
+    }
+
+    .input-flotante:focus + .label-flotante {
+        top: -15px; 
+        left: 0;               
+        transform: translateY(0);
+        font-size: 12px;        
+        color: #3498db;        
+        font-weight: bold;
+    }
+
+    .input-flotante:focus {
+        border-color: #3498db;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <!-- 1. Botón Fantasma -->
+  <h3>1. Botón Fantasma</h3>
+  <button class="boton-fantasma">Haz Clic Aquí</button> 
+
+  <!-- 2. Galería Zoom -->
+  <h3>2. Galeria Zoom</h3>
+  <div class="galeria">
+    <img src="https://picsum.photos/300/300?random=1" alt="Imagen 1">
+    <img src="https://picsum.photos/300/300?random=2" alt="Imagen 2">
+    <img src="https://picsum.photos/300/300?random=3" alt="Imagen 3">
+  </div>
+
+  <!-- 3. Modo Oscuro -->
+  <h3>3. Modo Oscuro</h3>
+  <div>
+    <label class="switch">
+      <input type="checkbox" id="toggle">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <!-- 4. Tootip -->
+  <h3>4. Tooltip</h3>
+  <div>
+    <p>
+      En este contrato, la 
+      <span class="tooltip">
+        cláusula de rescisión
+        <span class="tooltip-box">Es el dinero que se debe pagar para romper el contrato antes de tiempo.</span>
+      </span>
+      es obligatoria.
+    </p>
+  </div>
+
+  <!-- 5. Spinner -->
+  <h3>5. Spinner</h3>
+  <div class="spinner"></div>
+
+  <!-- 6. Input Flotante -->
+  <h3>6. Input Flotante</h3>
+  <div class="form">
+    <input type="text" id="nombre" class="input-flotante" placeholder=" ">
+    <label for="nombre" class="label-flotante">Nombre</label>
+  </div>
+
+</body>
+</html>

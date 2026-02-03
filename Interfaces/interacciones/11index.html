@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11</title>
+</head>
+<body>
+    <img style="height: 300px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Gluehlampe_01_KMJ.jpg/250px-Gluehlampe_01_KMJ.jpg" alt="" id="lb"><br>
+    <button id="on">Encender</button>
+    <button id="off">Apagar</button>
+    <script defer>
+        let off = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Gluehlampe_01_KMJ.jpg/250px-Gluehlampe_01_KMJ.jpg"
+        let on = "https://d1nhio0ox7pgb.cloudfront.net/_img/v_collection_png/512x512/shadow/lightbulb_on.png"
+        const onbtn = document.querySelector("#on")
+        const offbtn = document.querySelector("#off")
+        const img = document.querySelector("#lb")
+        onbtn.addEventListener("click", () =>{
+            lb.src = on
+        })
+        offbtn.addEventListener("click", ()=>{
+            lb.src = off
+        })
+    </script>
+</body>
+</html>
