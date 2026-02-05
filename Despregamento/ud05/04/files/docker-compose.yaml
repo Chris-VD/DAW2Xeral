@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: next_app
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./src:/app
+    ports:
+      - "8000:3000"
+
+networks:
+  next:
