@@ -57,21 +57,25 @@
         }
 
         .nav-item:hover > a + .dropdown-content{
-            display: block;
+            /* display: block; */
+            visibility: visible;
         }
 
         /* 2. MENU DESPLEGABLE */
         .dropdown-content {
-            display: none;
+            /* display: none; */
+            visibility: hidden;
             position: absolute;
             background: white;
+            top: 130%;
             min-width: 180px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.1);
             border-radius: 0 0 8px 8px;
             padding: 10px 0;
         }
         .dropdown-content:hover{
-            display: block;
+            /* display: block; */
+            visibility: visible;
         }
 
         .dropdown-content a {
@@ -217,6 +221,100 @@
             }
         }
 
+        #main{
+            display: flex;
+            justify-content: center;
+        }
+        #newimg{
+            margin-top: 40px;
+            position: relative;
+            width: fit-content;
+            overflow: hidden;
+            height: fit-content;
+            border-radius: 20px;
+        }
+        #nimg{
+            z-index: 1;
+            margin-top: 0px;
+            width: 100%;
+        }
+        #newimg:hover > #toshow{
+            left: 50%;
+            display: flex;
+        }
+        #toshow{
+            top: 0%;
+            opacity: 0.8;
+            z-index: 2;
+            position: absolute;
+            left:  100%;
+            background-color: black;
+            color: white;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 600px;
+            transition: 2s;
+            p{
+                width: 10%;
+            }
+        }
+
+        #anim{
+            position: relative;
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        #canvas{
+            position: absolute;
+            visibility: hidden;
+            background-color: black;
+            height: 200px;
+            width: 20%;
+            transform: translateY(-50%);
+        }
+        #btn{
+            width: 20%;
+        }
+        #btn:checked + #canvas{
+            animation-name: anim;
+            animation-delay: 2s;
+            animation-duration: 5s;
+            animation-fill-mode: forwards;
+            /* visibility: hidden; */
+        }
+
+        @keyframes anim{
+            0%{
+                right: 100%;
+                visibility: visible;
+            }
+            20%{
+                right: 80%;
+            }
+            40%{
+                right: 80%;
+            }
+            60%{
+                right: 60%;
+            }
+            70%{
+                right: 60%;
+            }
+            90%{
+                right: 55%;
+            }
+            100%{
+                right: 50%;
+                transform: translateX(50%) translateY(-50%);
+                
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -271,6 +369,21 @@
             </div>
         </div>
     </div>
+
+    <div id="anim">
+        <input type="checkbox" name="" id="btn">
+        <div id="canvas">
+            
+        </div>
+    </div>
+
+    <div id="main">
+        <div id="newimg">
+            <img id="nimg" src="https://picsum.photos/id/102/800/600" alt="Arquitectura">
+            <section id="toshow"><p>Texto</p></section>
+        </div>
+    </div>
+    
 
     <div class="tabs-wrapper">
         <h2>Zona de Video</h2>
