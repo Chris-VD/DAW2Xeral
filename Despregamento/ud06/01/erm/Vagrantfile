@@ -1,0 +1,39 @@
+# Isto indica que se utilice VirtualBox
+ENV['VAGRANT_DEFAULT_PROVIDER'] = 'virtualbox'
+
+# Indica que utilizamos a versión 2 de Vagrant
+Vagrant.configure("2") do |config|
+
+  # Indicamos a imaxe que utilizamos, esta debemos de tela descargada
+  config.vm.box = "debian/bookworm64"
+
+  # Cambiar o hostname interno da VM
+  config.vm.hostname = "cvd-apache-https"
+
+  # Configuración de VirtualBox (nome, memoria e cpus)
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "cvd-apache-https"
+    vb.memory = 1024
+    vb.cpus = 1
+  end
+
+  # Vagrant sempre engade unha rede NAT por defecto
+
+  # Rede host-only con IP fixa
+  config.vm.network "private_network", ip: "192.168.56.111"	
+
+  # Provisioning: habilitar root e contrasinal
+  config.vm.provision "shell", inline: <<-SHELL
+    set -e
+
+    # Permitir login root por SSH
+    sed -i 's/^#\\?PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+    sed -i 's/^#\\?PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config
+
+    # Contrasinal root
+    echo "root:abc123." | chpasswd
+
+    # Reinicia SSH
+    systemctl restart ssh
+  SHELL
+end
