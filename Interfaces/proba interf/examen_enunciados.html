@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen UD5_6 - Versión Final Completa</title>
+    <style>
+        /* --- 1. VARIABLES & SISTEMA DE DISEÑO --- */
+        :root {
+            --primary: #0d9488;       
+            --primary-hover: #0f766e; 
+            --accent: #f59e0b;       
+            --danger: #ef4444;
+            --success: #10b981;       
+            
+            --bg-body: #111827;     
+            --bg-card: #1f2937;     
+            --bg-hover: #374151;
+            
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: #374151;
+            
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+        }
+
+        /* --- 2. RESET GLOBAL --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- 3. SIDEBAR --- */
+        aside {
+            width: 220px;
+            background-color: var(--bg-card);
+            border-right: 1px solid var(--border-color);
+            padding: 25px;
+            display: flex; flex-direction: column;
+        }
+
+        .logo {
+            font-size: 1.5rem; font-weight: 800; color: var(--accent);
+            margin-bottom: 40px; text-align: center; letter-spacing: 2px;
+        }
+
+        .nav-links li { margin-bottom: 15px; }
+        
+        .nav-links li:hover{
+            background-color: var(--bg-hover);
+            padding-left: 20px;
+            a{
+                color: var(--primary);
+                transform: scale(120%);
+            }
+        }
+
+        .nav-links a {
+            display: flex; padding: 12px; 
+            border-radius: 8px; color: var(--text-muted); font-weight: 600;
+        }
+        
+
+        /* --- 4. MAIN--- */
+        main { flex: 1; padding: 40px; overflow-y: auto; display: flex; flex-direction: column; gap: 40px;}
+
+        header {
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+        
+        h1 { font-size: 2rem; color: var(--text-main); }
+
+        /* Botones y Avatar */
+        .btn-primary { padding: 12px 24px; border-radius: 50px; font-weight: 700; border: none; font-size: 0.9rem; background: linear-gradient(45deg, var(--primary), var(--primary-hover)); color: white; transition: all 300ms ease;}
+        .btn-primary:hover{
+            transform: translate(0, 2px);
+        }
+        .avatar { width: 50px; height: 50px; border-radius: 12px; object-fit: cover; border: 2px solid var(--accent); } 
+        
+        /* Dropdown Perfil */
+        .profile { display: inline-block; position: relative;
+        img{
+            position: absolute;
+            right: 0px;
+            top: 20px;
+        }}
+        .dropdown {
+            position: relative;
+            width: 180px;
+            right: 0px;
+            top: 80px;
+            visibility: hidden;
+            opacity: 0;
+            background-color: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: 12px; padding: 10px;
+            transition: all 300ms ease;
+            z-index: 1;
+        }
+        .profile>img:hover + .dropdown{
+            opacity: 100%;
+            visibility: visible;
+        }
+        .dropdown:hover{
+            opacity: 100%;
+            visibility: visible;
+        }
+
+        /* --- 5. TARJETAS --- */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            perspective: 1000px;
+            transition: all 400ms ease;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            height: 300px;
+            transition: transform 0.4s, opacity 0.4s, filter 0.4s;
+        }
+        .cards-grid:hover{
+            .card{
+                opacity: 50%;
+                transform: translate(0, 5px);
+            }
+            .card:hover{
+                opacity: 100%;
+                transform: translate(0, -10px);
+                .card-overlay-full{
+                    opacity: 100%;
+                }
+            }
+        }
+
+
+        .card-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .card-body {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+        }
+
+        .card-overlay-full {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(13, 148, 136, 0.95);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 20px;
+             transition: opacity 0.4s;
+            opacity: 0%;
+        }
+        .overlay-text { color: white; }
+
+        /* 7. GALERIA */
+        .gallery h2 {
+            margin: 20px;
+        }
+
+        .gallery .video {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            margin-bottom: 20px;
+        }
+
+        .gallery video {
+            display: block; 
+            object-fit: cover;
+            aspect-ratio: 16 / 9;
+        }
+
+        .gallery .img {
+            display: flex;
+            gap: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto; 
+            display: block; 
+            object-fit: cover;
+        }
+
+        /* --- 6. FORMULARIO AUTOMÁTICO --- */
+        .card-1 { 
+            background: var(--bg-card); 
+            border-radius: 16px; 
+            padding: 20px; 
+            border: 1px solid var(--border-color); 
+        }
+
+        /* SPINNER*/
+        .spinner-container { 
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            height: 100px;
+        }
+
+        .form-container { 
+            max-height: 0; 
+            opacity: 0; 
+            overflow: hidden; 
+        }
+
+        .loader {
+            border: 4px solid rgba(255,255,255,0.1); 
+            border-radius: 50%; 
+            width: 40px; 
+            height: 40px; 
+        }
+
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-label { display: block; margin-bottom: 8px; font-size: 0.9rem; color: var(--accent); }
+        .form-control {
+            width: 100%; padding: 12px; background: var(--bg-body); border: 2px solid var(--border-color);
+            border-radius: 8px; color: white; outline: none;
+        }
+        .form-control.valid { border-color: var(--success); }
+        .form-control.invalid { border-color: var(--danger); }
+        .error-message {
+            color: var(--danger); font-size: 0.85rem; margin-top: 5px; 
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            aside { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">&lt;DEV/OV&gt;</div>
+        <ul class="nav-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Proyectos</a></li>
+            <li><a href="#">Analíticas</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <header>
+            <h1>Bienvenido, Usuario</h1>
+            <div class="profile">
+                <img src="https://ui-avatars.com/api/?name=Max+Power&background=0d9488&color=fff" alt="Perfil" class="avatar">
+                <ul class="dropdown">
+                    <li><a href="#">Mi Cuenta</a></li>
+                    <li><a href="#">Configuración</a></li>
+                    <li><a href="#">Salir</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <section class="cards-grid">
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80" alt="Tech" class="card-img">
+                <div class="card-body">
+                    <h3 style="color:white">Tecnología</h3>
+                </div>
+                <div class="card-overlay-full">
+                    <div class="overlay-text">
+                        <h3>Acceder a Tecnología</h3>
+                        <p>Ver últimos gadgets</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80" alt="Cyber" class="card-img">
+                <div class="card-body">
+                    <h3 style="color:white">Ciberseguridad</h3>
+                </div>
+                <div class="card-overlay-full">
+                    <div class="overlay-text">
+                        <h3>Protección Total</h3>
+                        <p>Analizar amenazas</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="Data" class="card-img">
+                <div class="card-body">
+                    <h3 style="color:white">Big Data</h3>
+                </div>
+                <div class="card-overlay-full">
+                    <div class="overlay-text">
+                        <h3>Bases de Datos</h3>
+                        <p>Gestionar clusters</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="gallery">
+            <h2>Galeria</h2>
+            <section class="video">
+                <video src="video1.mp4" style="width: 100%;" autoplay muted loop></video>
+                <video src="video1.mp4" style="width: 100%;" controls>
+                    <track default kind="captions" src="captions.vtt" srclang="es" label="Español"/>
+                </video>
+            </section>
+            <section class="img">
+                <picture>
+                    <source media="(min-width: 1024px)" srcset="./img_ex/horizontal1.jpg">
+                    <source srcset="./img_ex/vertical1.jpg">
+                    <img src="./img_ex/horizontal1.jpg" alt="">
+                </picture>
+            </section>
+        </section>
+        <article class="card-1">
+            <div class="card-body-1" style="text-align: center; min-height: 200px; display: flex; flex-direction: column; justify-content: center;">
+                
+                <div class="spinner-container">
+                    <div class="loader"></div>
+                    <p style="margin-top: 15px; color: var(--accent);">Cargando módulo de seguridad...</p>
+                </div>
+
+                <div class="form-container">
+                    <form id="registroForm">
+                        <h3 style="margin-bottom: 25px; color: var(--primary);">Registro de Usuario</h3>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Nombre Completo</label>
+                            <input type="text" class="form-control" placeholder="Nombre" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Contraseña</label>
+                            <input type="password" id="pass1" class="form-control" placeholder="Contraseña" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Repetir Contraseña</label>
+                            <input type="password" id="pass2" class="form-control" placeholder="Repetir contraseña" required>
+                            <div id="pwdError" class="error-message">Las contraseñas no coinciden</div>
+                        </div>
+
+                        <button type="submit" class="btn-primary">Registrar</button>
+                    </form>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <script>
+        const pass1 = document.getElementById('pass1');
+        const pass2 = document.getElementById('pass2');
+        const errorMsg = document.getElementById('pwdError');
+
+        function validatePasswords() {
+            if (pass2.value === '') {
+                pass2.classList.remove('valid', 'invalid');
+                errorMsg.classList.remove('active');
+                return;
+            }
+            if (pass1.value === pass2.value) {
+                pass2.classList.add('valid');
+                pass2.classList.remove('invalid');
+                errorMsg.classList.remove('active');
+            } else {
+                pass2.classList.add('invalid');
+                pass2.classList.remove('valid');
+                errorMsg.classList.add('active');
+            }
+        }
+        pass1.addEventListener('input', validatePasswords);
+        pass2.addEventListener('input', validatePasswords);
+    </script>
+</body>
+</html>
